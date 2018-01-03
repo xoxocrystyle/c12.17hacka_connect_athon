@@ -1,0 +1,48 @@
+#container{
+    height: 85%;
+    width: 75%;
+    background-color: lightgrey;
+    display: inline-block;
+    vertical-align:top;
+    font-size: 5em;
+    text-align: center;
+}
+.cell{
+    height: 9%;
+    width: 85%;
+    background-color: lightgrey;
+    display: inline-block;
+    border-radius: 40%;
+
+}
+
+.row{
+    height: 100%;
+    width: 13%;
+    background-color: blue;
+    display: inline-block;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background:darkgreen;
+    margin:0;
+}
+#mainContainer{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+#stats{
+    width: 22%;
+    height: 85%;
+    background-color: darkgrey;
+    display: inline-block;
+
+}
+#title{
+    height: 15%;
+    background-color: lightseagreen;
+}
