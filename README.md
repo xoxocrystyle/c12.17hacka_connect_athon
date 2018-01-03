@@ -2,7 +2,7 @@
 
 Scope: 
 - Make a connect 4 game
-  - basic rule description: http://www.hannu.se/games/othello/rules.htm
+  - basic rule description: https://en.wikipedia.org/wiki/Connect_Four#Gameplay
   - at least 2 players
   - at least 7x6 board size
   - players alternate in some way or form
