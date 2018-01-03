@@ -1,23 +1,25 @@
 #container{
-    height: 85%;
+    height: 100%;
     width: 75%;
     background-color: lightgrey;
     display: inline-block;
     vertical-align:top;
     font-size: 5em;
     text-align: center;
+
 }
 .cell{
-    height: 9%;
-    width: 85%;
+    height: 11%;
+    width: 80%;
     background-color: lightgrey;
     display: inline-block;
     border-radius: 40%;
 
 }
 
-.row{
-    height: 100%;
+.col{
+    padding-top: 5%;
+    height: 90%;
     width: 13%;
     background-color: blue;
     display: inline-block;
@@ -26,23 +28,75 @@
 body{
     height: 100vh;
     width: 100vw;
-    background:darkgreen;
+    background:darkgrey;
     margin:0;
 }
 #mainContainer{
-    height:100%;
+    height:80%;
     width:100%;
     margin:0;
     padding:0;
 }
 #stats{
-    width: 22%;
-    height: 85%;
+    width: 24%;
+    height: 100%;
     background-color: darkgrey;
     display: inline-block;
 
 }
 #title{
     height: 15%;
+    width: 75%;
+    margin:0;
     background-color: lightseagreen;
+
+
+}
+.chip1{
+    position: absolute;
+    width:7%;
+    height:10%;
+    border-radius: 50%;
+    background-color: white;
+    left: 10%;
+}
+.chip2{
+    position: absolute;
+    width:7%;
+    height:10%;
+    border-radius: 50%;
+    background-color: black;
+    left: 20%;
+}
+.chip3{
+    position: absolute;
+    width:7%;
+    height:10%;
+    border-radius: 50%;
+    background-color: white;
+    left: 30%;
+}
+.chip4{
+    position: absolute;
+    width:7%;
+    height:10%;
+    border-radius: 50%;
+    background-color: black;
+    left: 40%;
+}
+.chip5{
+    position: absolute;
+    width:7%;
+    height:10%;
+    border-radius: 50%;
+    background-color: white;
+    left: 50%;
+}
+.chip6{
+    position: absolute;
+    width:7%;
+    height:10%;
+    border-radius: 50%;
+    background-color: black;
+    left: 60%;
 }
