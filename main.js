@@ -26,25 +26,24 @@ function GameBoard() {
 
     this.generateBoard = function(){
         var rowArray = []
-        for(var row = 0; row < 6; row++){
-            var $row = $('<div>',{
-                class: 'row'
+        for(var col = 0; col < 6; col++){
+            var $col = $('<div>',{
+                class: 'col'
             });
             for(var cell = 0; cell < 7; cell++){
                 var $cell = $('<div>',{
                     class: 'cell',
-                    row: row,
-                    col: cell
+                    col: col,
+                    row: cell
                 });
                 // $cell.click(placePiece);
-                $row.append($cell);
+                $col.append($cell);
             }
-            rowArray.push($row);
+            rowArray.push($col);
         }
         $('#container').append(rowArray);
 
     }
 
 }
-
 
