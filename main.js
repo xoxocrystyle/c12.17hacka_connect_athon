@@ -45,5 +45,53 @@ function GameBoard() {
 
     }
 
+    //Switch player 1 to player 2 after dropping chip
+    // turn numbers equal to 42
+
+    this.placeChip = function(){
+        var row = $(this).attr('row');
+        var col = $(this).attr('col');
+
+        if(this.playing){
+            if(this.gameBoard[row][col] === 0){
+                if (this.playerTurn === 1){
+                    //$(this).placedChip player 1 picked chip in the cell function
+                    this.gameBoard[row][col] = 1;
+                } else {
+                    //$(this).placedChip player 1 picked chip in the cell function
+                    this.gameBoard[row][col] = 2;
+                }
+                //put function below that states if winner is found.
+                if(!winner()){
+                    if(this.playerTurn === 1){
+                        this.playerTurn = 2 ;
+                        ++this.turnNumber;
+                    } else {
+                        this.playerTurn =1;
+                        ++this.turnNumber;
+                    }
+                    //display area to put whos turn it is
+                    //$('....;).text("Player " + this.playerTurn +"'s turn");
+
+                }
+            }
+
+        }
+    }
+
+    // this.winnerWinner = function(){
+    //     //check for this
+    //     if(this.checkForWin???) {
+    //
+    //     }else if(this.turnNumber === 42){
+    //         // game is a tie
+    //         this.playing = false;
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
+
+
 }
 
