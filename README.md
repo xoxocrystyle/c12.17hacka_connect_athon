@@ -6,7 +6,6 @@ Scope:
   - at least 2 players
   - at least 7x6 board size
   - players alternate in some way or form
-  - one player should be able to win (by having the most squares)
 - Additional requirements:
   - must be able to pick any height of a column and have the chip placed at the right height
   - players must be able to choose which symbol they use for their chips
