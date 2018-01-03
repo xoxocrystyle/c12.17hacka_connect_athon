@@ -18,10 +18,11 @@
 }
 
 .col{
-    padding-top: 5%;
-    height: 90%;
+    padding-top: 2%;
+    height: 83%;
     width: 13%;
     background-color: blue;
+    border-radius: 2%;
     display: inline-block;
 }
 
@@ -32,7 +33,7 @@ body{
     margin:0;
 }
 #mainContainer{
-    height:80%;
+    height:90%;
     width:100%;
     margin:0;
     padding:0;
@@ -45,7 +46,7 @@ body{
 
 }
 #title{
-    height: 15%;
+    height: 10%;
     width: 75%;
     margin:0;
     background-color: lightseagreen;
@@ -56,47 +57,62 @@ body{
     position: absolute;
     width:7%;
     height:10%;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: white;
-    left: 10%;
+    left: 5%;
 }
 .chip2{
     position: absolute;
     width:7%;
     height:10%;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: black;
-    left: 20%;
+    left: 15%;
 }
 .chip3{
     position: absolute;
     width:7%;
     height:10%;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: white;
-    left: 30%;
+    left: 25%;
 }
 .chip4{
     position: absolute;
     width:7%;
     height:10%;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: black;
-    left: 40%;
+    left: 35%;
 }
 .chip5{
     position: absolute;
     width:7%;
     height:10%;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: white;
-    left: 50%;
+    left: 45%;
 }
 .chip6{
     position: absolute;
     width:7%;
     height:10%;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: black;
-    left: 60%;
+    left: 55%;
+}
+.chip7{
+    position: absolute;
+    width:7%;
+    height:10%;
+    border-radius: 40%;
+    background-color: black;
+    left: 65%;
+}
+.chipRow{
+    height: 13%;
+    width: 100%;
+    background-color: lightblue;
+    /*display: inline-block;*/
+
 }

@@ -24,24 +24,73 @@ function GameBoard() {
         this.generateBoard();
     }
 
-    this.generateBoard = function(){
+    this.generateBoard = function() {
         var rowArray = []
-        for(var col = 0; col < 6; col++){
+        var chipRow = $('<div>', {
+            class: 'chipRow'
+        });
+        $('#container').append(chipRow);
+
+
+        for(var chip1 = 0; chip1 < 7; chip1++) {
+            var $chip1 = $('<div>', {
+                class: 'chip1'
+            });
+            $('.chipRow').append($chip1);
+        }
+
+
+        for(var chip2 = 0; chip2 < 7; chip2++) {
+            var $chip2 = $('<div>', {
+                class: 'chip2'
+            });
+            $('.chipRow').append($chip2);
+        }
+
+        for(var chip3 = 0; chip3 < 7; chip3++) {
+            var $chip3 = $('<div>', {
+                class: 'chip3'
+            });
+            $('.chipRow').append($chip3);
+        }
+
+
+        var $chip4 = $('<div>', {
+            class: 'chip4'
+        });
+        $('.chipRow').append($chip4);
+
+        var $chip5 = $('<div>', {
+            class: 'chip5'
+        });
+        $('.chipRow').append($chip5);
+        var $chip6 = $('<div>', {
+            class: 'chip6'
+        });
+        $('.chipRow').append($chip6);
+        var $chip7 = $('<div>', {
+            class: 'chip7'
+        });
+        $('.chipRow').append($chip7);
+
+
+        for(var col = 0; col < 7; col++){
             var $col = $('<div>',{
                 class: 'col'
             });
-            for(var cell = 0; cell < 7; cell++){
+            for(var cell = 0; cell < 6; cell++){
                 var $cell = $('<div>',{
                     class: 'cell',
                     col: col,
                     row: cell
                 });
-                // $cell.click(placePiece);
+
                 $col.append($cell);
             }
             rowArray.push($col);
         }
         $('#container').append(rowArray);
+
 
     }
 
