@@ -1,120 +1,79 @@
-
 #container{
     height: 100%;
-    width: 50%;
-    #background-color: lightgrey;
+    width: 54%;
     background:url("https://i.pinimg.com/originals/cf/43/08/cf430887e595326299b5fdf85a75b107.jpg"), #000;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-size: auto;
     display: inline-block;
     vertical-align:top;
-    font-size: 5em;
-    text-align: center;
     margin: 0;
-    padding: 0;
+    padding-left: 2%;
     position: absolute;
-    left: 300px;
     overflow: hidden;
-
-
 }
-.cell{
-    height: 11%;
-    width: 14%;
-    /*#background-color:;*/
-    display: inline-block;
-    border-radius: 40%;
-    background-color: lightyellow;
-
+.cell0,
+.cell1,
+.cell2,
+.cell3,
+.cell4,
+.cell5
+{
+    display: inline-flex;
+    flex-flow: column;
+    height: 80%;
+    width: 16%;
+    border-style: dotted;
+    border-color: orangered;
+    box-sizing: border-box;
+    position: relative;
 }
-
+.chip {
+    height: 14%;
+    width: 100%;
+    margin: 2% 0 0 1%;
+    background-color: pink;
+    border-radius: 50%;
+    position: absolute;
+}
 .col{
     padding-top: 2%;
     height: 83%;
     width: 13%;
-    /*#background-color: blue;*/
     border-radius: 2%;
     display: inline-block;
 }
-
 body{
     height: 100vh;
     width: 100vw;
     margin:0;
     background: #000;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
 }
-
 #mainContainer{
-    height:90%;
+    height:100%;
     width:100%;
     margin:0;
     padding:0;
 }
 #stats{
-    width: 24%;
+    width: 20%;
     height: 100%;
     display: inline-block;
     font-family: VT323, monospace;
     color: white;
-
+    background-color: black;
 }
-/*#title{*/
-    /*height: 10%;*/
-    /*width: 75%;*/
-    /*margin:0;*/
-
-/*}*/
-
-
-
 .chipRow{
+    /*padding-left:2%;*/
     height: 13%;
     width: 100%;
-    #background-color: lightblue;
-    opacity: .5;
+    display: inline-flex;
+    flex-flow: column-reverse;
+    /*#background-color: lightblue;*/
+    /*opacity: 1;*/
     /*display: inline-block;*/
-
 }
-
-footer {
-    font-family: VT323, monospace;
-    font-size: 80px;
-    color: white;
-    text-align: center;
-    top: 60%;
-    left: 10%;
-    position: absolute;
+.player1{
+    background-color: blue;
 }
-
-/*///////TEST*/
-
-.chipContainer1,
-.chipContainer2,
-.chipContainer3,
-.chipContainer4,
-.chipContainer5,
-.chipContainer6{
-    display: inline-block;
-    height: 100%;
-    width: 15%;
-
-
-}
-.chip{
-    height: 80%;
-    width: 80%;
+.player2{
     background-color: red;
-    border-radius: 40%;
-
-    position: relative;
 }
-
-
-
-
-
-
