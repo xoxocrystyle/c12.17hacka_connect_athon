@@ -26,7 +26,7 @@ function GameBoard() {
 
     this.turnNumber = 1;
     this.playing = true;
-    this.playerTurn = 1;
+    this.currentPlayer = 0;
     this.gameBoard = [];
     this.init = function () {
         this.generateBoard();
@@ -64,11 +64,21 @@ function GameBoard() {
         }
         // console.log(this.gameBoard);
     }
+
+    this.togglePlayer = function(){
+        this.currentPlayer = 1 - this.currentPlayer;
+    }
+
     this.playerCheck = function(event){
         console.log(this.clickedDiv);
         var target = $(event.target);
+        if(this.currentPlayer === 0){
         target.addClass("player1").removeClass("empty");
-        $('#player1').addClass("player1");
+        }if(this.currentPlayer === 1){
+            target.addClass("player2").removeClass("empty");
+        }
+        this.togglePlayer();
+        // $('#player1').addClass("player1");
     //   CALL WIN CHECK FUNCTION
 
     }
