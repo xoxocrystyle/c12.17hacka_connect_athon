@@ -102,6 +102,7 @@ function chipCreate0() {
 
     this.placeChip = function () {
         //need to figure out how to put next two var to this
+        this.playerCheck();
         var row = $(this).attr('row');
         var col = $(this).attr('col');
 
@@ -131,6 +132,8 @@ function chipCreate0() {
 
         }
     };
+
+
 
 
     //check tiles left and right to see if same same
