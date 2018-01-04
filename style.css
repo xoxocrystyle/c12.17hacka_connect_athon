@@ -53,13 +53,41 @@ body{
 
 
 }
-.chip1{
+.chip0{
     position: absolute;
-    width:7%;
-    height:10%;
+    width:8%;
+    height:9%;
     border-radius: 40%;
     background-color: white;
-    left: 5%;
+    left: 4%;
+    animation-name: red;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+.chip1{
+    position: absolute;
+    width:8%;
+    height:9%;
+    border-radius: 40%;
+    background-color: white;
+    left: 4%;
+
+}
+.animateChip1{
+    animation-name: blue;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes red {
+    0%   {background-color:red; top:15%;}
+    100% {background-color:red; top:73%;}
+}
+
+@keyframes blue {
+    0%   {background-color:blue; top:15%;}
+    100% {background-color:blue; top:73%;}
 }
 .chip2{
     position: absolute;
@@ -116,3 +144,17 @@ body{
     /*display: inline-block;*/
 
 }
+
+
+
+
+/*///////TEST*/
+.fixedPos{
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+}
+
