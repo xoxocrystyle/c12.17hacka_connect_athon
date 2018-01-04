@@ -109,7 +109,12 @@ footer {
     width: 80%;
     background-color: red;
     border-radius: 40%;
+
+    position: relative;
 }
+
+
+
 
 
 
