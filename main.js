@@ -6,8 +6,12 @@ function initializeGame() {
     game = new GameBoard();
     game.init();
     ///Test//
-    // $("div[row]").click(chipCreate0);
-
+    $(".cell0").click(chipCreate0);
+    $(".cell1").click(chipCreate1);
+    $(".cell2").click(chipCreate2);
+    $(".cell3").click(chipCreate3);
+    $(".cell4").click(chipCreate4);
+    $(".cell5").click(chipCreate5);
 
         //dom create your falling chip element with appropriate class
         //get the position of the row that was clicked
@@ -27,12 +31,24 @@ function GameBoard() {
     this.turnNumber = 1;
     this.playing = true;
     this.playerTurn = 1;
-    this.gameBoard = [];
+    this.gameBoard = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+    ];
     this.init = function () {
         this.generateBoard();
-        this.clickedDiv = $(".cell");
-        this.clickedDiv.on("click",this.playerCheck.bind(this));
+        // this.clickedDiv = $(".cell");
+        // this.clickedDiv.on("click", this.playerCheck.bind(this));
 
+    };
+
+    this.togglePlayer = function () {
+        this.playerTurn = 1 - this.playerTurn;
     };
 
     this.generateBoard = function () {
@@ -51,26 +67,23 @@ function GameBoard() {
 
 
         for (var col = 0; col < 6; col++) {
-            this.gameBoard[col] = [];
-            for (var cell = 0; cell < 7; cell++) {
-                this.gameBoard[col][cell] = $("<div>").addClass("cell").addClass("empty").attr({
-                    "row": col,
-                    "col": cell
-                });
-                this.gameBoard[col][cell].appendTo("#container");
-
-            }
+            var colNum = $('<div>', {
+                class: 'cell'+col,
+            });
+            colNum.appendTo("#container");
 
         }
-        // console.log(this.gameBoard);
-    }
-    this.playerCheck = function(event){
-        console.log(this.clickedDiv);
-        var target = $(event.target);
-        target.addClass("player1").removeClass("empty");
-        $('#player1').addClass("player1");
-    //   CALL WIN CHECK FUNCTION
 
+        // console.log(this.gameBoard);
+
+        this.playerCheck = function (event) {
+            console.log(this.clickedDiv);
+            var target = $(event.target);
+            target.addClass("player1").removeClass("empty");
+            $('#player1').addClass("player1");
+            //   CALL WIN CHECK FUNCTION
+
+        }
     }
 }
     // Switch player 1 to player 2 after dropping chip
@@ -84,22 +97,81 @@ function GameBoard() {
 //use animate function to move chip to new position
 //find out how far down to animate chip
 // $(this).parent().append(clone);
-
-function chipCreate0() {
-    var targetPosition = $(this).position();
-    console.log(targetPosition);
-
+//
+    function chipCreate0() {
+        // var targetPosition = $(this).position();
+        // console.log(targetPosition);
+        var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
+        var dropLevel = this.childElementCount;
         var chip = $('<div>', {
             class: 'chip'
         });
-        $(".chipRow").append(chip);
-        $(".chip").animate({'top': '81.6%'}, 2000);
-        ////bottom [81.6%,68%,54.2%,40.4%,26.6%,12.9%]
+        $(".cell0").append(chip);
+        $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+
         // $(this).parent().append(clone);
 
+    }
+//
+    function chipCreate1() {
+    var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
+    var dropLevel = this.childElementCount;
+    var chip = $('<div>', {
+        class: 'chip'
+    });
+    $(".cell1").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+    }
+
+function chipCreate2() {
+    var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
+    var dropLevel = this.childElementCount;
+    var chip = $('<div>', {
+        class: 'chip'
+    });
+    $(".cell2").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
 }
 
+function chipCreate3() {
 
+    var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
+    var dropLevel = this.childElementCount;
+    var chip = $('<div>', {
+        class: 'chip'
+    });
+    $(".cell3").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+}
+function chipCreate4() {
+
+    var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
+    var dropLevel = this.childElementCount;
+    var chip = $('<div>', {
+        class: 'chip'
+    });
+    $(".cell4").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+}
+
+function chipCreate5() {
+    var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
+    var dropLevel = this.childElementCount;
+    var chip = $('<div>', {
+        class: 'chip'
+    });
+    $(".cell5").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+}
+function chipCreate6() {
+    var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
+    var dropLevel = this.childElementCount;
+    var chip = $('<div>', {
+        class: 'chip'
+    });
+    $(".cell6").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+}
     this.placeChip = function () {
         //need to figure out how to put next two var to this
         var row = $(this).attr('row');
@@ -159,22 +231,22 @@ function chipCreate0() {
     };
 
     //new
-    this.checkUpRight = function(row,col,rowchg,colchg){
-        if(this.checkAdjacent(row,col,-1,1) + this.checkAdjacent(row,col,1,-1) === 2) {
+    this.checkUpRight = function (row, col, rowchg, colchg) {
+        if (this.checkAdjacent(row, col, -1, 1) + this.checkAdjacent(row, col, 1, -1) === 2) {
             return true;
         }
-        if(this.checkAdjacent(row,col,-1,1) + this.checkAdjacent(row,col,1,-1) > 3) {
+        if (this.checkAdjacent(row, col, -1, 1) + this.checkAdjacent(row, col, 1, -1) > 3) {
             return true;
         }
         this.winnerWinner();
         console.log("winner winner")
     };
 
-    this.checkDownRight = function(row,col,rowchg,colchg){
-        if(this.checkAdjacent(row,col,-1,-1) + this.checkAdjacent(row,col,1,1) === 2) {
+    this.checkDownRight = function (row, col, rowchg, colchg) {
+        if (this.checkAdjacent(row, col, -1, -1) + this.checkAdjacent(row, col, 1, 1) === 2) {
             return true;
         }
-        if(this.checkAdjacent(row,col,-1,-1) + this.checkAdjacent(row,col,1,1) > 3){
+        if (this.checkAdjacent(row, col, -1, -1) + this.checkAdjacent(row, col, 1, 1) > 3) {
             return true;
         }
         this.winnerWinner();
@@ -191,17 +263,12 @@ function chipCreate0() {
     };
 
 //check adjacent tile not sure how if needed
-    this.checkAdjacent = function(row,col,rowchg,colchg){
+    this.checkAdjacent = function (row, col, rowchg, colchg) {
 
-        };
-
-
+    };
 
 
-
-
-
-    this.winnerWinner = function() {
+    this.winnerWinner = function () {
 
         //check for this
         if (this.checkHorizontal) {

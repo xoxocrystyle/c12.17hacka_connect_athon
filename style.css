@@ -6,26 +6,36 @@
     background-size: auto;
     display: inline-block;
     vertical-align:top;
-    /*text-align: center;*/
     margin: 0;
     padding-left: 2%;
     position: absolute;
-    /*left: 300px;*/
     overflow: hidden;
-/*//font size caused problems*/
-
 }
-.cell{
-    height: 13.2%;
-    width: 13.2%;
+
+.cell0,
+.cell1,
+.cell2,
+.cell3,
+.cell4,
+.cell5
+{
+    display: inline-flex;
+    flex-flow: column;
+    height: 80%;
+    width: 16%;
     border-style: dotted;
     border-color: orangered;
     box-sizing: border-box;
-    /*#background-color:;*/
-    display: inline-block;
-    border-radius: 50%;
-    background-color: black;
+    position: relative;
+}
 
+.chip {
+    height: 14%;
+    width: 100%;
+    margin: 2% 0 0 1%;
+    background-color: pink;
+    border-radius: 50%;
+    position: absolute;
 }
 
 .col{
@@ -59,61 +69,26 @@ body{
     color: white;
     background-color: black;
 
+
 }
-/*#title{*/
-    /*height: 10%;*/
-    /*width: 75%;*/
-    /*margin:0;*/
-
-/*}*/
-
-
 
 .chipRow{
     /*padding-left:2%;*/
     height: 13%;
     width: 100%;
-
+    display: inline-flex;
+    flex-flow: column-reverse;
     /*#background-color: lightblue;*/
     /*opacity: 1;*/
     /*display: inline-block;*/
 
 }
 
-/*footer {*/
-    /*font-family: VT323, monospace;*/
-    /*font-size: 80px;*/
-    /*color: white;*/
-    /*text-align: center;*/
-    /*top: 60%;*/
-    /*left: 10%;*/
-    /*position: absolute;*/
-/*}*/
-
-/*///////TEST*/
-
-.chipContainer1,
-.chipContainer2,
-.chipContainer3,
-.chipContainer4,
-.chipContainer5,
-.chipContainer6{
-    display: inline-block;
-    height: 100%;
-    width: 15%;
-
-
-}
-.chip{
-    height: 13.1%;
-    width: 13.1%;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-}
-
 .player1{
     background-color: blue;
+}
+.player2{
+    background-color: red;
 }
 
 
