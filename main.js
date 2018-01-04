@@ -30,7 +30,6 @@ function GameBoard() {
 
     this.turnNumber = 1;
     this.playing = true;
-    this.playerTurn = 1;
     this.gameBoard = [
         [],
         [],
@@ -40,6 +39,8 @@ function GameBoard() {
         [],
         []
     ];
+
+    this.currentPlayer = 0;
     this.init = function () {
         this.generateBoard();
         // this.clickedDiv = $(".cell");
@@ -75,6 +76,23 @@ function GameBoard() {
         }
 
         // console.log(this.gameBoard);
+    }
+
+    this.togglePlayer = function(){
+        this.currentPlayer = 1 - this.currentPlayer;
+    }
+
+    this.playerCheck = function(event){
+        console.log(this.clickedDiv);
+        var target = $(event.target);
+        if(this.currentPlayer === 0){
+        target.addClass("player1").removeClass("empty");
+        }if(this.currentPlayer === 1){
+            target.addClass("player2").removeClass("empty");
+        }
+        this.togglePlayer();
+        // $('#player1').addClass("player1");
+    //   CALL WIN CHECK FUNCTION
 
         this.playerCheck = function (event) {
             console.log(this.clickedDiv);
