@@ -21,7 +21,7 @@
 }
 .cell{
     height: 11%;
-    width: 80%;
+    width: 14%;
     /*#background-color:;*/
     display: inline-block;
     border-radius: 40%;
@@ -73,7 +73,7 @@ body{
 
 .chipRow{
     height: 13%;
-    width: 35%;
+    width: 100%;
     #background-color: lightblue;
     opacity: .5;
     /*display: inline-block;*/
