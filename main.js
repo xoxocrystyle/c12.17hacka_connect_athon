@@ -29,10 +29,10 @@ function GameBoard() {
     ];
     this.init = function(){
         this.generateBoard();
-    }
+    };
 
     this.generateBoard = function() {
-        var rowArray = []
+        var rowArray = [];
         var chipRow = $('<div>', {
             class: 'chipRow'
         });
@@ -78,12 +78,13 @@ function GameBoard() {
         $('#container').append(rowArray);
 
 
-    }
+    };
 
     //Switch player 1 to player 2 after dropping chip
     // turn numbers equal to 42
 
     this.placeChip = function(){
+        //need to figure out how to put next two var to this
         var row = $(this).attr('row');
         var col = $(this).attr('col');
 
@@ -105,26 +106,71 @@ function GameBoard() {
                         this.playerTurn =1;
                         ++this.turnNumber;
                     }
-                    //display area to put whos turn it is
-                    //$('....;).text("Player " + this.playerTurn +"'s turn");
+                    // display area to put whos turn it is
+                     $("#stats").text("Player " + this.playerTurn +"'s turn");
 
                 }
             }
 
         }
-    }
+    };
 
-    // this.winnerWinner = function(){
-    //     //check for this
-    //     if(this.checkForWin???) {
-    //
-    //     }else if(this.turnNumber === 42){
-    //         // game is a tie
-    //         this.playing = false;
-    //     }else{
-    //         return false;
-    //     }
-    // }
+    //check tiles left and right to see if same same
+    this.checkHorizontal = function(row,col,rowchg,colchg){
+        if(this.checkAdjacent(row,col,0,1) + this.checkAdjacent(row,col,0,-1) === 2){
+            return true;
+        }
+        if(this.checkAdjacent(row,col,0,1) + this.checkAdjacent(row,col,0,-1) > 3){
+            return true;
+        }
+        this.winnerWinner();
+    };
+
+    this.checkVertical = function(row,col,rowchg,colchg){
+        if(this.checkAdjacent(row,col,1,0) + this.checkAdjacent(row,col,-1,0) === 2){
+            return true;
+        }
+        if(this.checkAdjacent(row,col,1,0) + this.checkAdjacent(row,col,-1,0) > 3){
+            return true;
+        }
+        this.winnerWinner();
+        console.log("winner winner")
+
+    };
+
+//check board if piece placed and where it is and returns.
+    this.checkCell = function(row,col){
+        if(this.gameBoard[row][col] !== undefined){
+            return this.gameBoard[row][col];
+        }
+
+    };
+//check adjacent tile not sure how to use
+    this.checkAdjacent = function(row,col,rowchg,colchg){
+
+        };
+
+
+
+    this.winnerWinner = function(){
+        //check for this
+        if(this.checkHorizontal){
+            $("#stats").text("Player " + this.playerTurn +"Win");
+
+        }
+        if(this.checkVertical) {
+            $("#stats").text("Player " + this.playerTurn +"Win");
+
+        }
+
+        else if(this.turnNumber === 42){
+            $("#stats").text("Game is a tie play again.");
+            // game is a tie
+            this.playing = false;
+        }else{
+            return false;
+        }
+    }
 
 
 
