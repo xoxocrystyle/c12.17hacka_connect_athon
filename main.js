@@ -8,8 +8,25 @@ function initializeGame() {
     ///Test//
     $("div[col=0]").click(function () {
         console.log('clicked');
-        $('.chipContainer1, .chip1').addClass("animateChip1");
+        var chip = $('<div>', {
+            class: 'chip'
+        });
+        $(".chipContainer1").append(chip);
+        var col = $("div[col=0]");
+        var colPosition = col.position();
+        console.log(( "left: " + colPosition.left + ", top: " + colPosition.top ));
+
+        $(".chip").animate({top:'1000px'});
     });
+        //dom create your falling chip element with appropriate class
+        //get the position of the column that was clicked
+
+        //place it at the top position of 1 chip above the column
+        //append new chip to column in question
+        //determine height of chip final resting position
+        //use animate function to move chip to new position
+        //find out how far down to animate chip
+        // $(this).parent().append(clone);
 
 
 }
@@ -33,26 +50,18 @@ function GameBoard() {
 
     this.generateBoard = function() {
         var rowArray = [];
+
         var chipRow = $('<div>', {
             class: 'chipRow'
         });
         $('#container').append(chipRow);
 
-
         for(var chip1 = 1; chip1 < 7; chip1++) {
             var $chipcontainer = $('<div>', {
                 class: 'chipContainer' + chip1,
             });
-            var $chip1 = $('<div>', {
-                class: 'chip' + chip1,
-            });
             chipRow.append($chipcontainer);
-            for(var i = 1; i < 8; i++){
-                var $chip1 = $('<div>', {
-                    class: 'chip' + i,
-                });
-                $($chipcontainer).append($chip1);
-            }
+
         }
 
 
@@ -78,7 +87,7 @@ function GameBoard() {
         $('#container').append(rowArray);
 
 
-    };
+    }
 
     //Switch player 1 to player 2 after dropping chip
     // turn numbers equal to 42
@@ -143,6 +152,7 @@ function GameBoard() {
         if(this.gameBoard[row][col] !== undefined){
             return this.gameBoard[row][col];
         }
+
 
     };
 //check adjacent tile not sure how to use
