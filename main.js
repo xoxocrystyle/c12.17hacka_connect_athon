@@ -1,5 +1,7 @@
+
 $(document).ready(initializeGame);
 var game = null;
+
 function initializeGame() {
     game = new GameBoard();
     game.init();
@@ -10,16 +12,22 @@ function initializeGame() {
     $(".cell3").click(chipCreate3);
     $(".cell4").click(chipCreate4);
     $(".cell5").click(chipCreate5);
+
     //dom create your falling chip element with appropriate class
     //get the position of the row that was clicked
+
     //place it at the top position of 1 chip above the column
     //append new chip to column in question
     //determine height of chip final resting position
     //use animate function to move chip to new position
     //find out how far down to animate chip
     // $(this).parent().append(clone);
+
+
 }
+
 function GameBoard() {
+
     this.turnNumber = 1;
     this.playing = true;
     this.playerTurn = 1;
@@ -36,15 +44,19 @@ function GameBoard() {
         this.generateBoard();
         // this.clickedDiv = $(".cell");
         // this.clickedDiv.on("click", this.playerCheck.bind(this));
+
     };
+
     this.togglePlayer = function () {
         this.playerTurn = 1 - this.playerTurn;
     };
+
     this.generateBoard = function () {
         var chipRow = $('<div>', {
             class: 'chipRow'
         });
         $('#container').append(chipRow);
+
         // for (var chip1 = 1; chip1 < 7; chip1++) {
         //     var $chipcontainer = $('<div>', {
         //         class: 'chipContainer' + chip1,
@@ -52,19 +64,25 @@ function GameBoard() {
         //     chipRow.append($chipcontainer);
         //
         // }
+
+
         for (var col = 0; col < 6; col++) {
             var colNum = $('<div>', {
                 class: 'cell'+col,
             });
             colNum.appendTo("#container");
+
         }
+
         // console.log(this.gameBoard);
+
         this.playerCheck = function (event) {
             console.log(this.clickedDiv);
             var target = $(event.target);
             target.addClass("player1").removeClass("empty");
             $('#player1').addClass("player1");
             //   CALL WIN CHECK FUNCTION
+
         }
     }
 }
@@ -79,6 +97,7 @@ function GameBoard() {
 //find out how far down to animate chip
 // $(this).parent().append(clone);
 //
+
 function chipCreate0() {
     // var targetPosition = $(this).position();
     // console.log(targetPosition);
@@ -89,7 +108,9 @@ function chipCreate0() {
     });
     $(".cell0").append(chip);
     $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+
     // $(this).parent().append(clone);
+
 }
 //
 function chipCreate1() {
@@ -101,6 +122,7 @@ function chipCreate1() {
     $(".cell1").append(chip);
     $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
 }
+
 function chipCreate2() {
     var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
     var dropLevel = this.childElementCount;
@@ -110,7 +132,9 @@ function chipCreate2() {
     $(".cell2").append(chip);
     $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
 }
+
 function chipCreate3() {
+
     var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
     var dropLevel = this.childElementCount;
     var chip = $('<div>', {
@@ -120,6 +144,7 @@ function chipCreate3() {
     $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
 }
 function chipCreate4() {
+
     var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
     var dropLevel = this.childElementCount;
     var chip = $('<div>', {
@@ -128,6 +153,7 @@ function chipCreate4() {
     $(".cell4").append(chip);
     $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
 }
+
 function chipCreate5() {
     var dropPositions = ['81.6%','68%','54.2%','40.4%','26.6%','12.9%'];
     var dropLevel = this.childElementCount;
@@ -150,6 +176,7 @@ this.placeChip = function () {
     //need to figure out how to put next two var to this
     var row = $(this).attr('row');
     var col = $(this).attr('col');
+
     if (this.playing) {
         if (this.gameBoard[row][col] === 0) {
             if (this.playerTurn === 1) {
@@ -170,10 +197,14 @@ this.placeChip = function () {
                 }
                 // display area to put whos turn it is
                 $("#stats").text("Player " + this.playerTurn + "'s turn");
+
             }
         }
+
     }
 };
+
+
 //check tiles left and right to see if same same
 this.checkHorizontal = function (row, col, rowchg, colchg) {
     if (this.checkAdjacent(row, col, 0, 1) + this.checkAdjacent(row, col, 0, -1) === 2) {
@@ -184,7 +215,9 @@ this.checkHorizontal = function (row, col, rowchg, colchg) {
     }
     this.winnerWinner();
     console.log("winner winner")
+
 };
+
 this.checkVertical = function (row, col, rowchg, colchg) {
     if (this.checkAdjacent(row, col, 1, 0) + this.checkAdjacent(row, col, -1, 0) === 2) {
         return true;
@@ -194,7 +227,9 @@ this.checkVertical = function (row, col, rowchg, colchg) {
     }
     this.winnerWinner();
     console.log("winner winner")
+
 };
+
 //new
 this.checkUpRight = function (row, col, rowchg, colchg) {
     if (this.checkAdjacent(row, col, -1, 1) + this.checkAdjacent(row, col, 1, -1) === 2) {
@@ -206,6 +241,7 @@ this.checkUpRight = function (row, col, rowchg, colchg) {
     this.winnerWinner();
     console.log("winner winner")
 };
+
 this.checkDownRight = function (row, col, rowchg, colchg) {
     if (this.checkAdjacent(row, col, -1, -1) + this.checkAdjacent(row, col, 1, 1) === 2) {
         return true;
@@ -216,24 +252,37 @@ this.checkDownRight = function (row, col, rowchg, colchg) {
     this.winnerWinner();
     console.log("winner winner")
 };
+
 //check board if piece placed and where it is and returns.
 this.checkCell = function (row, col) {
     if (this.gameBoard[row][col] !== undefined) {
         return this.gameBoard[row][col];
     }
+
+
 };
+
 //check adjacent tile not sure how if needed
 this.checkAdjacent = function (row, col, rowchg, colchg) {
+
 };
+
+
 this.winnerWinner = function () {
+
     //check for this
     if (this.checkHorizontal) {
         $("#stats").text("Player " + this.playerTurn + "Win");
+
     }
     if (this.checkVertical) {
         $("#stats").text("Player " + this.playerTurn + "Win");
+
     }
+
+
     else if (this.turnNumber === 42) {
+
         if (this.checkDownRight) {
             $("#stats").text("Player " + this.playerTurn + "Win");
         }
@@ -241,6 +290,7 @@ this.winnerWinner = function () {
             $("#stats").text("Player " + this.playerTurn + "Win");
         }
         else if (this.turnNumber === 42) {
+
             $("#stats").text("Game is a tie play again.");
             // game is a tie
             this.playing = false;
@@ -248,4 +298,5 @@ this.winnerWinner = function () {
             return false;
         }
     }
+
 }

@@ -10,6 +10,10 @@
     position: absolute;
     overflow: hidden;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb97ee5acd4a466931f025c6f4e8aad22b0ffab2
 .cell0,
 .cell1,
 .cell2,
@@ -26,6 +30,10 @@
     box-sizing: border-box;
     position: relative;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb97ee5acd4a466931f025c6f4e8aad22b0ffab2
 .chip {
     height: 14%;
     width: 100%;
@@ -60,7 +68,14 @@ body{
     font-family: VT323, monospace;
     color: white;
     background-color: black;
+<<<<<<< HEAD
 }
+=======
+
+
+}
+
+>>>>>>> cb97ee5acd4a466931f025c6f4e8aad22b0ffab2
 .chipRow{
     /*padding-left:2%;*/
     height: 13%;
@@ -71,8 +86,21 @@ body{
     /*opacity: 1;*/
     /*display: inline-block;*/
 }
+<<<<<<< HEAD
 .player1{
     background-color: blue;
+=======
+
+.player1{
+    background-color: blue;
+}
+.player2{
+    background-color: red;
+}
+
+.player2{
+    background-color: red;
+>>>>>>> cb97ee5acd4a466931f025c6f4e8aad22b0ffab2
 }
 .player2{
     background-color: red;
