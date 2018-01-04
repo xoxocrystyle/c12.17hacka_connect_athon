@@ -6,32 +6,11 @@ function initializeGame() {
     game = new GameBoard();
     game.init();
     ///Test//
-    $("div[col=0]").click(function () {
-        console.log('clicked');
-        var chip = $('<div>', {
-            class: 'chip'
-        });
-        $(".chipContainer1").append(chip);
-        var col = $("div[col=0]");
-        var colPosition = col.position();
-        console.log(( "left: " + colPosition.left + ", top: " + colPosition.top ));
+    // $("div[row]").click(chipCreate0);
 
-        $(".chip").animate({'top':'500px'}, 2000);
-    });
-    $("div[col=1]").click(function () {
-        console.log('clicked');
-        var chip = $('<div>', {
-            class: 'chip'
-        });
-        $(".chipContainer2").append(chip);
-        var col = $("div[col=1]");
-        var colPosition = col.position();
-        console.log(( "left: " + colPosition.left + ", top: " + colPosition.top ));
 
-        $(".chip").animate({'top':'500px'}, 2000);
-    });
         //dom create your falling chip element with appropriate class
-        //get the position of the column that was clicked
+        //get the position of the row that was clicked
 
         //place it at the top position of 1 chip above the column
         //append new chip to column in question
@@ -51,6 +30,9 @@ function GameBoard() {
     this.gameBoard = [];
     this.init = function () {
         this.generateBoard();
+        this.clickedDiv = $(".cell");
+        this.clickedDiv.on("click",this.playerCheck.bind(this));
+
     };
 
     this.generateBoard = function () {
@@ -59,32 +41,63 @@ function GameBoard() {
         });
         $('#container').append(chipRow);
 
-        for (var chip1 = 1; chip1 < 7; chip1++) {
-            var $chipcontainer = $('<div>', {
-                class: 'chipContainer' + chip1,
-            });
-            chipRow.append($chipcontainer);
+        // for (var chip1 = 1; chip1 < 7; chip1++) {
+        //     var $chipcontainer = $('<div>', {
+        //         class: 'chipContainer' + chip1,
+        //     });
+        //     chipRow.append($chipcontainer);
+        //
+        // }
 
-        }
 
-
-        for (var col = 0; col < 7; col++) {
+        for (var col = 0; col < 6; col++) {
             this.gameBoard[col] = [];
-            for (var cell = 0; cell < 6; cell++) {
+            for (var cell = 0; cell < 7; cell++) {
                 this.gameBoard[col][cell] = $("<div>").addClass("cell").addClass("empty").attr({
-                    "col": col,
-                    "row": cell
+                    "row": col,
+                    "col": cell
                 });
-                // this.gameBoard[col][cell].appendTo("#container");
                 this.gameBoard[col][cell].appendTo("#container");
+
             }
 
         }
+        // console.log(this.gameBoard);
     }
+    this.playerCheck = function(event){
+        console.log(this.clickedDiv);
+        var target = $(event.target);
+        target.addClass("player1").removeClass("empty");
+        $('#player1').addClass("player1");
+    //   CALL WIN CHECK FUNCTION
 
-
+    }
+}
     // Switch player 1 to player 2 after dropping chip
     // turn numbers equal to 42
+//dom create your falling chip element with appropriate class
+//get the position of the row that was clicked
+
+//place it at the top position of 1 chip above the row
+//append new chip to column in question
+//determine height of chip final resting position
+//use animate function to move chip to new position
+//find out how far down to animate chip
+// $(this).parent().append(clone);
+
+function chipCreate0() {
+    var targetPosition = $(this).position();
+    console.log(targetPosition);
+
+        var chip = $('<div>', {
+            class: 'chip'
+        });
+        $(".chipRow").append(chip);
+        $(".chip").animate({'top': '81.6%'}, 2000);
+        ////bottom [81.6%,68%,54.2%,40.4%,26.6%,12.9%]
+        // $(this).parent().append(clone);
+
+}
 
 
     this.placeChip = function () {
@@ -118,6 +131,7 @@ function GameBoard() {
 
         }
     };
+
 
     //check tiles left and right to see if same same
     this.checkHorizontal = function (row, col, rowchg, colchg) {
@@ -182,13 +196,12 @@ function GameBoard() {
         };
 
 
-    };
 
 
 
 
 
-    this.winnerWinner = function(){
+    this.winnerWinner = function() {
 
         //check for this
         if (this.checkHorizontal) {
@@ -203,23 +216,23 @@ function GameBoard() {
 
         else if (this.turnNumber === 42) {
 
-        if(this.checkDownRight) {
-            $("#stats").text("Player " + this.playerTurn +"Win");
-        }
-        if(this.checkUpRight){
-            $("#stats").text("Player " + this.playerTurn +"Win");
-        }
-        else if(this.turnNumber === 42){
+            if (this.checkDownRight) {
+                $("#stats").text("Player " + this.playerTurn + "Win");
+            }
+            if (this.checkUpRight) {
+                $("#stats").text("Player " + this.playerTurn + "Win");
+            }
+            else if (this.turnNumber === 42) {
 
-            $("#stats").text("Game is a tie play again.");
-            // game is a tie
-            this.playing = false;
-        } else {
-            return false;
+                $("#stats").text("Game is a tie play again.");
+                // game is a tie
+                this.playing = false;
+            } else {
+                return false;
+            }
         }
+
     }
-
-}
 
 
 
