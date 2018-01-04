@@ -90,7 +90,7 @@ function GameBoard() {
     }
 
     //Switch player 1 to player 2 after dropping chip
-    // turn numbers equal to 42
+    // turn numbers equal to 42//where to put placeChip??
 
     this.placeChip = function(){
         //need to figure out how to put next two var to this
@@ -133,6 +133,8 @@ function GameBoard() {
             return true;
         }
         this.winnerWinner();
+        console.log("winner winner")
+
     };
 
     this.checkVertical = function(row,col,rowchg,colchg){
@@ -147,6 +149,29 @@ function GameBoard() {
 
     };
 
+    //new
+    this.checkUpRight = function(row,col,rowchg,colchg){
+        if(this.checkAdjacent(row,col,-1,1) + this.checkAdjacent(row,col,1,-1) === 2) {
+            return true;
+        }
+        if(this.checkAdjacent(row,col,-1,1) + this.checkAdjacent(row,col,1,-1) > 3) {
+            return true;
+        }
+        this.winnerWinner();
+        console.log("winner winner")
+    };
+
+    this.checkDownRight = function(row,col,rowchg,colchg){
+        if(this.checkAdjacent(row,col,-1,-1) + this.checkAdjacent(row,col,1,1) === 2) {
+            return true;
+        }
+        if(this.checkAdjacent(row,col,-1,-1) + this.checkAdjacent(row,col,1,1) > 3){
+            return true;
+        }
+        this.winnerWinner();
+        console.log("winner winner")
+    };
+
 //check board if piece placed and where it is and returns.
     this.checkCell = function(row,col){
         if(this.gameBoard[row][col] !== undefined){
@@ -155,11 +180,10 @@ function GameBoard() {
 
 
     };
-//check adjacent tile not sure how to use
+//check adjacent tile not sure how if needed
     this.checkAdjacent = function(row,col,rowchg,colchg){
 
         };
-
 
 
     this.winnerWinner = function(){
@@ -172,7 +196,12 @@ function GameBoard() {
             $("#stats").text("Player " + this.playerTurn +"Win");
 
         }
-
+        if(this.checkDownRight) {
+            $("#stats").text("Player " + this.playerTurn +"Win");
+        }
+        if(this.checkUpRight){
+            $("#stats").text("Player " + this.playerTurn +"Win");
+        }
         else if(this.turnNumber === 42){
             $("#stats").text("Game is a tie play again.");
             // game is a tie
