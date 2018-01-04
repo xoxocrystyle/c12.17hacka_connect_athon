@@ -16,7 +16,7 @@ function initializeGame() {
         var colPosition = col.position();
         console.log(( "left: " + colPosition.left + ", top: " + colPosition.top ));
 
-        $(".chip").animate({top:'1000px'});
+        $(".chip").animate({'top':'200px'}, 1000);
     });
         //dom create your falling chip element with appropriate class
         //get the position of the column that was clicked
