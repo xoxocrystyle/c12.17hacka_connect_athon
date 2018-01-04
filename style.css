@@ -22,7 +22,7 @@
 .cell{
     height: 11%;
     width: 80%;
-    #background-color:;
+    /*#background-color:;*/
     display: inline-block;
     border-radius: 40%;
     background-color: lightyellow;
@@ -33,7 +33,7 @@
     padding-top: 2%;
     height: 83%;
     width: 13%;
-    #background-color: blue;
+    /*#background-color: blue;*/
     border-radius: 2%;
     display: inline-block;
 }
@@ -69,6 +69,8 @@ body{
 
 /*}*/
 
+
+
 .chipRow{
     height: 13%;
     width: 35%;
@@ -89,13 +91,25 @@ footer {
 }
 
 /*///////TEST*/
-.fixedPos{
-    position: fixed;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 100;
-    top: 0;
+
+.chipContainer1,
+.chipContainer2,
+.chipContainer3,
+.chipContainer4,
+.chipContainer5,
+.chipContainer6{
+    display: inline-block;
+    height: 100%;
+    width: 15%;
+
+
 }
+.chip{
+    height: 80%;
+    width: 80%;
+    background-color: red;
+    border-radius: 40%;
+}
+
 
 

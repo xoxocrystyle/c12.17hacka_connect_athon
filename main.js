@@ -8,8 +8,25 @@ function initializeGame() {
     ///Test//
     $("div[col=0]").click(function () {
         console.log('clicked');
-        $('.chipContainer1, .chip1').addClass("animateChip1");
+        var chip = $('<div>', {
+            class: 'chip'
+        });
+        $(".chipContainer1").append(chip);
+        var col = $("div[col=0]");
+        var colPosition = col.position();
+        console.log(( "left: " + colPosition.left + ", top: " + colPosition.top ));
+
+        $(".chip").animate({top:'1000px'});
     });
+        //dom create your falling chip element with appropriate class
+        //get the position of the column that was clicked
+
+        //place it at the top position of 1 chip above the column
+        //append new chip to column in question
+        //determine height of chip final resting position
+        //use animate function to move chip to new position
+        //find out how far down to animate chip
+        // $(this).parent().append(clone);
 
 
 }
@@ -29,30 +46,22 @@ function GameBoard() {
     ];
     this.init = function(){
         this.generateBoard();
-    }
+    };
 
     this.generateBoard = function() {
-        var rowArray = []
+        var rowArray = [];
+
         var chipRow = $('<div>', {
             class: 'chipRow'
         });
         $('#container').append(chipRow);
 
-
         for(var chip1 = 1; chip1 < 7; chip1++) {
             var $chipcontainer = $('<div>', {
                 class: 'chipContainer' + chip1,
             });
-            var $chip1 = $('<div>', {
-                class: 'chip' + chip1,
-            });
             chipRow.append($chipcontainer);
-            for(var i = 1; i < 8; i++){
-                var $chip1 = $('<div>', {
-                    class: 'chip' + i,
-                });
-                $($chipcontainer).append($chip1);
-            }
+
         }
 
 
@@ -84,6 +93,7 @@ function GameBoard() {
     // turn numbers equal to 42
 
     this.placeChip = function(){
+        //need to figure out how to put next two var to this
         var row = $(this).attr('row');
         var col = $(this).attr('col');
 
@@ -105,26 +115,72 @@ function GameBoard() {
                         this.playerTurn =1;
                         ++this.turnNumber;
                     }
-                    //display area to put whos turn it is
-                    //$('....;).text("Player " + this.playerTurn +"'s turn");
+                    // display area to put whos turn it is
+                     $("#stats").text("Player " + this.playerTurn +"'s turn");
 
                 }
             }
 
         }
-    }
+    };
 
-    // this.winnerWinner = function(){
-    //     //check for this
-    //     if(this.checkForWin???) {
-    //
-    //     }else if(this.turnNumber === 42){
-    //         // game is a tie
-    //         this.playing = false;
-    //     }else{
-    //         return false;
-    //     }
-    // }
+    //check tiles left and right to see if same same
+    this.checkHorizontal = function(row,col,rowchg,colchg){
+        if(this.checkAdjacent(row,col,0,1) + this.checkAdjacent(row,col,0,-1) === 2){
+            return true;
+        }
+        if(this.checkAdjacent(row,col,0,1) + this.checkAdjacent(row,col,0,-1) > 3){
+            return true;
+        }
+        this.winnerWinner();
+    };
+
+    this.checkVertical = function(row,col,rowchg,colchg){
+        if(this.checkAdjacent(row,col,1,0) + this.checkAdjacent(row,col,-1,0) === 2){
+            return true;
+        }
+        if(this.checkAdjacent(row,col,1,0) + this.checkAdjacent(row,col,-1,0) > 3){
+            return true;
+        }
+        this.winnerWinner();
+        console.log("winner winner")
+
+    };
+
+//check board if piece placed and where it is and returns.
+    this.checkCell = function(row,col){
+        if(this.gameBoard[row][col] !== undefined){
+            return this.gameBoard[row][col];
+        }
+
+
+    };
+//check adjacent tile not sure how to use
+    this.checkAdjacent = function(row,col,rowchg,colchg){
+
+        };
+
+
+
+    this.winnerWinner = function(){
+        //check for this
+        if(this.checkHorizontal){
+            $("#stats").text("Player " + this.playerTurn +"Win");
+
+        }
+        if(this.checkVertical) {
+            $("#stats").text("Player " + this.playerTurn +"Win");
+
+        }
+
+        else if(this.turnNumber === 42){
+            $("#stats").text("Game is a tie play again.");
+            // game is a tie
+            this.playing = false;
+        }else{
+            return false;
+        }
+    }
 
 
 
