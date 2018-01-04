@@ -53,90 +53,7 @@ body{
 
 
 }
-.chip0{
-    position: absolute;
-    width:8%;
-    height:9%;
-    border-radius: 40%;
-    background-color: white;
-    left: 4%;
-    animation-name: red;
-    animation-duration: 4s;
-    animation-delay: 2s;
-    animation-fill-mode: forwards;
-}
-.chip1{
-    position: absolute;
-    width:8%;
-    height:9%;
-    border-radius: 40%;
-    background-color: white;
-    left: 4%;
 
-}
-.animateChip1{
-    animation-name: blue;
-    animation-duration: 4s;
-    animation-delay: 2s;
-    animation-fill-mode: forwards;
-}
-@keyframes red {
-    0%   {background-color:red; top:15%;}
-    100% {background-color:red; top:73%;}
-}
-
-@keyframes blue {
-    0%   {background-color:blue; top:15%;}
-    100% {background-color:blue; top:73%;}
-}
-.chip2{
-    position: absolute;
-    width:7%;
-    height:10%;
-    border-radius: 40%;
-    background-color: black;
-    left: 15%;
-}
-.chip3{
-    position: absolute;
-    width:7%;
-    height:10%;
-    border-radius: 40%;
-    background-color: white;
-    left: 25%;
-}
-.chip4{
-    position: absolute;
-    width:7%;
-    height:10%;
-    border-radius: 40%;
-    background-color: black;
-    left: 35%;
-}
-.chip5{
-    position: absolute;
-    width:7%;
-    height:10%;
-    border-radius: 40%;
-    background-color: white;
-    left: 45%;
-}
-.chip6{
-    position: absolute;
-    width:7%;
-    height:10%;
-    border-radius: 40%;
-    background-color: black;
-    left: 55%;
-}
-.chip7{
-    position: absolute;
-    width:7%;
-    height:10%;
-    border-radius: 40%;
-    background-color: black;
-    left: 65%;
-}
 .chipRow{
     height: 13%;
     width: 100%;
@@ -145,10 +62,25 @@ body{
 
 }
 
+.chipContainer1,
+.chipContainer2,
+.chipContainer3,
+.chipContainer4,
+.chipContainer5,
+.chipContainer6{
+    display: inline-block;
+    height: 100%;
+    width: 15%;
 
 
-
-/*///////TEST*/
+}
+.chip{
+    height: 80%;
+    width: 80%;
+    background-color: red;
+    border-radius: 40%;
+}
+    /*///////TEST*/
 .fixedPos{
     position: fixed;
     left: 0;
