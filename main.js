@@ -79,6 +79,7 @@ function togglePlayer() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[0].push(currentPlayer);
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -96,6 +97,7 @@ function togglePlayer() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[1].push(currentPlayer);
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -114,6 +116,7 @@ function togglePlayer() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[2].push(currentPlayer);
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -131,6 +134,7 @@ function togglePlayer() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[3].push(currentPlayer);
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
     function chipCreate4() {
@@ -147,6 +151,7 @@ function togglePlayer() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[4].push(currentPlayer);
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -164,6 +169,7 @@ function togglePlayer() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[5].push(currentPlayer);
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -180,6 +186,7 @@ function togglePlayer() {
                 counter++;
                 if (counter === 4) {
                     console.log("winner");
+                    // gameWon();
                 }
 
             }
@@ -192,11 +199,15 @@ function togglePlayer() {
         var counter = 1;
         for (var verticalPiece = 0; verticalPiece < arr[1].length; verticalPiece++) {
             if (arr[1][verticalPiece] === arr[1][verticalPiece + 1]) {
-                if (arr[horizontalPiece + 1][0] == undefined) {
+                if (arr[verticalPiece + 1][0] == undefined) {
                     return
                 }
                 console.log("I have found a match");
                 counter++
+                if (counter === 4) {
+                    console.log("winner");
+                    // gameWon();
+                }
             }
         }
     }
