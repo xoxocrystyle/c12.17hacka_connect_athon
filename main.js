@@ -1,4 +1,3 @@
-
 $(document).ready(initializeGame);
 var game = null;
 var currentPlayer = 0;
@@ -21,6 +20,13 @@ function initializeGame() {
     $(".cell3").click(chipCreate3);
     $(".cell4").click(chipCreate4);
     $(".cell5").click(chipCreate5);
+
+    //intro
+    $("#intro").hide().fadeIn(100);
+    $("#play").on("click", function (e) {
+        e.preventDefault();
+        $("#intro").fadeOut(1000);
+    });
 }
 
 function GameBoard() {
@@ -41,11 +47,12 @@ function GameBoard() {
             colNum.appendTo("#container");
 
         }
+
     }
 }
+
 //dom create your falling chip element with appropriate class
 //get the position of the row that was clicked
-
 //place it at the top position of 1 chip above the row
 //append new chip to column in question
 //determine height of chip final resting position
@@ -53,10 +60,10 @@ function GameBoard() {
 //find out how far down to animate chip
 // $(this).parent().append(clone);
 //
- function togglePlayer() {
+
+function togglePlayer() {
     currentPlayer = 1 - currentPlayer;
 }
-
 
     function chipCreate0() {
         var dropLevel = this.childElementCount;
@@ -153,4 +160,3 @@ function GameBoard() {
         gameBoard[5].push(currentPlayer);
         togglePlayer();
     }
-
