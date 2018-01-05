@@ -78,6 +78,7 @@ function togglePlayer() {
         $(".cell0").append(chip)
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[0].push(currentPlayer);
+        checkHorizon(gameBoard);
         togglePlayer();
     }
 
@@ -94,6 +95,7 @@ function togglePlayer() {
         $(".cell1").append(chip)
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[1].push(currentPlayer);
+        checkHorizon(gameBoard);
         togglePlayer();
     }
 
@@ -111,6 +113,7 @@ function togglePlayer() {
         $(".cell2").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[2].push(currentPlayer);
+        checkHorizon(gameBoard);
         togglePlayer();
     }
 
@@ -127,6 +130,7 @@ function togglePlayer() {
         $(".cell3").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[3].push(currentPlayer);
+        checkHorizon(gameBoard);
         togglePlayer();
     }
     function chipCreate4() {
@@ -142,6 +146,7 @@ function togglePlayer() {
         $(".cell4").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[4].push(currentPlayer);
+        checkHorizon(gameBoard);
         togglePlayer();
     }
 
@@ -158,5 +163,88 @@ function togglePlayer() {
         $(".cell5").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[5].push(currentPlayer);
+        checkHorizon(gameBoard);
         togglePlayer();
     }
+
+
+
+    function checkHorizon(arr) {
+        var counter = 1;
+        for (var horizontalPiece = 0; horizontalPiece < arr.length - 1; horizontalPiece++) {
+            if (arr[horizontalPiece][0] === arr[horizontalPiece + 1][0]) {
+                if (arr[horizontalPiece + 1][0] == undefined) {
+                    return
+                }
+                console.log("I have found a match");
+                counter++;
+                if (counter === 4) {
+                    console.log("winner");
+                }
+
+            }
+
+        }
+    }
+
+
+    function checkVertical(arr) {
+        var counter = 1;
+        for (var verticalPiece = 0; verticalPiece < arr[1].length; verticalPiece++) {
+            if (arr[1][verticalPiece] === arr[1][verticalPiece + 1]) {
+                if (arr[horizontalPiece + 1][0] == undefined) {
+                    return
+                }
+                console.log("I have found a match");
+                counter++
+            }
+        }
+    }
+    // function checkUpRight(arr) {
+    //     var counter = 1;
+    //     for (var col = 0; col < arr.length;) {
+    //         for (var row = 0; row < arr[col].length;) {
+    //             if (arr[col][row] == arr[col + 1][row + 1]) {
+    //                 counter++;
+    //                 col++;
+    //                 row++;
+    //             }
+    //         }
+    //     }
+    //
+    //
+    // }
+    //
+    //
+    // function checkUpLeft(arr) {
+    //     var counter = 1;
+    //     for (var col = 0; col < arr.length;) {
+    //         for (var row = 0; row < arr[col].length;) {
+    //             if (arr[col][row] == arr[col - 1][row + 1]) {
+    //                 counter++;
+    //                 col++;
+    //                 row++;
+    //             }
+    //         }
+    //     }
+    //
+    //
+    // }
+
+// console.log(gameBoard);
+// console.log(checkHorizon(gameBoard));
+// console.log(checkVertical(gameBoard));
+
+// function checkRightUp(arr){
+//   var counter =1;
+//   for(var col=0; col<arr.length; col++){
+//     for(var row=0; row<arr[col]; row++ ){
+//       if(arr[col][row] === arr[col + 1][row +1]){
+//           console.log("I have a match");
+//         counter++;
+//       }
+//     }
+//    }
+// }
+// console.log(gameBoard);
+// console.log(checkRightUp(gameBoard));
