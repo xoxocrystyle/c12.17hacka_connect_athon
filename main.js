@@ -1,4 +1,3 @@
-
 $(document).ready(initializeGame);
 var game = null;
 var currentPlayer = 0;
@@ -153,4 +152,3 @@ function GameBoard() {
         gameBoard[5].push(currentPlayer);
         togglePlayer();
     }
-
