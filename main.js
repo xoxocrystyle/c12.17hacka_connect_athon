@@ -63,6 +63,7 @@ function GameBoard() {
 
 function togglePlayer() {
     currentPlayer = 1 - currentPlayer;
+
 }
 
     function chipCreate0() {
