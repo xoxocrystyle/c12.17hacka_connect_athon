@@ -1,4 +1,3 @@
-
 #container{
     height: 100%;
     width: 54%;
@@ -11,6 +10,7 @@
     position: absolute;
     overflow: hidden;
 }
+
 
 .cell0,
 .cell1,
@@ -52,6 +52,7 @@ body{
     width: 100vw;
     margin:0;
     background: #000;
+    overflow: hidden;
 
 }
 
@@ -94,6 +95,7 @@ body{
     /*margin: 2% 0 0 1%;*/
     background-repeat: no-repeat;
 }
+
 .player1{
     background-color: red;
     background:url("https://i.imgur.com/DYjbDHp.png");
@@ -106,9 +108,130 @@ body{
     background-repeat: no-repeat;
 }
 
-.player2{
-    background-color: red;
+/*intro*/
+#intro {
+    #display: block;
+    #vertical-align: top;
+    background: url("https://i.imgur.com/obojRZ5.gif"), no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width:100vw;
+    height: 100vh;
+    background-color: #060F38;
+    overflow: hidden;
+
 }
+
+#intropic{
+    position: fixed;
+    right: 60%;
+    bottom: 80%;
+}
+
+#intro-button>#play {
+    position: fixed;
+    bottom: 55%;
+    left: 37%;
+    z-index: 1000;
+    font-size: 75px;
+    font-family: VT323, monospace;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+    color: rgba(255,255,255,1);
+    text-decoration: normal;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    white-space: pre;
+    text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(73,61,61,1) , 0 0 40px #000000 , 0 0 70px #2d242c , 0 0 80px #050404 , 0 0 100px #070707 ;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    background: transparent;
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+#title {
+    position: fixed;
+    bottom: 10%;
+    left: 30%;
+    z-index: 1000;
+    font-size: 150px;
+    text-align: center;
+    font-family: VT323, monospace;
+    /*display: inline-block;*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+    color: yellow;
+    text-decoration: normal;
+    /*text-align: center;*/
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    white-space: pre;
+    text-shadow: 0 0 10px rgba(255,255,0,0.3) , 0 0 20px rgba(255,255,0,0.3) , 0 0 30px rgba(255,255,0,0.3), 0 0 40px #000000 , 0 0 70px #2d242c , 0 0 80px #050404 , 0 0 100px rgba(255,255,0,0.3);
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    background: transparent;
+}
+
+
+#intro-button>#play:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;
+}
+
+/*#you-won, #you-lose{*/
+    /*position: fixed;*/
+    /*bottom: 10%;*/
+    /*left: 30%;*/
+    /*z-index: 1000;*/
+    /*font-size: 150px;*/
+    /*text-align: center;*/
+    /*font-family: VT323, monospace;*/
+    /*!*display: inline-block;*!*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+    /*padding: 10px;*/
+    /*border: none;*/
+    /*color: yellow;*/
+    /*text-decoration: normal;*/
+    /*!*text-align: center;*!*/
+    /*-o-text-overflow: clip;*/
+    /*text-overflow: clip;*/
+    /*white-space: pre;*/
+    /*text-shadow: 0 0 10px rgba(255,255,0,0.3) , 0 0 20px rgba(255,255,0,0.3) , 0 0 30px rgba(255,255,0,0.3), 0 0 40px #000000 , 0 0 70px #2d242c , 0 0 80px #050404 , 0 0 100px rgba(255,255,0,0.3);*/
+    /*-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
+    /*-moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
+    /*-o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
+    /*transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
+    /*background: transparent;*/
+
+/*}*/
 
 
 
