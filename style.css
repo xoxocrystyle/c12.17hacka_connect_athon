@@ -13,20 +13,23 @@
 
 
 .cell0,
- .cell1,
- .cell2,
- .cell3,
- .cell4,
- .cell5
+.cell1,
+.cell2,
+.cell3,
+.cell4,
+.cell5,
+.cell6
  {
      display: inline-flex;
      flex-flow: column;
      height: 80%;
-     width: 16%;
+     width: 14%;
      border-style: dotted;
      border-color: orangered;
+     border-top-color: black;
      box-sizing: border-box;
      position: relative;
+
  }
 
 .cell0:hover,
@@ -34,15 +37,16 @@
 .cell2:hover,
 .cell3:hover,
 .cell4:hover,
-.cell5:hover
+.cell5:hover,
+.cell6:hover
 {
     box-shadow: 0 0 10px lightgoldenrodyellow;
 }
 
 .chip {
-    height: 14%;
+    height: 16%;
     width: 100%;
-    margin: 2% 0 0 1%;
+    margin: 5% 0 0 1%;
     background-color: pink;
     border-radius: 50%;
     position: absolute;
@@ -52,7 +56,6 @@
     padding-top: 2%;
     height: 83%;
     width: 13%;
-
     border-radius: 2%;
     display: inline-block;
 }
@@ -104,21 +107,21 @@ body{
     background-size:contain;
     /*margin: 2% 0 0 1%;*/
     background-repeat: no-repeat;
+
 }
 
-.player1{
+.player1 {
     background-color: red;
-    background:url("https://i.imgur.com/DYjbDHp.png");
+    background: url("https://i.imgur.com/DYjbDHp.png");
     position: absolute;
     padding: 0;
     height: 16%;
-    width:100%;
-    background-size:contain;
+    width: 100%;
+    background-size: contain;
     /*margin: 2% 0 0 1%;*/
     background-repeat: no-repeat;
+
 }
-
-
 #miss {
     animation-name: floating;
     animation-duration: 3s;
@@ -147,6 +150,7 @@ body{
     from { transform: translate(0,  0px); }
     65%  { transform: translate(0, 15px); }
     to   { transform: translate(0, -0px); }
+
 }
 /*intro*/
 #intro {
@@ -290,11 +294,11 @@ body{
 
 }
 
-button {
+#reset{
     background-color: transparent;
     color: white;
     outline: 0;
-    font-size: 20px;
+    font-size: 2.2rem;
     border: none;
     font-family: VT323, monospace;
 }
