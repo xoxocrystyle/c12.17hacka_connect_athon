@@ -109,6 +109,7 @@ function togglePlayerHighlight() {
         gameBoard[0].push(currentPlayer);
         togglePlayerHighlight();
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -127,6 +128,7 @@ function togglePlayerHighlight() {
         gameBoard[1].push(currentPlayer);
         togglePlayerHighlight();
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -146,6 +148,7 @@ function togglePlayerHighlight() {
         gameBoard[2].push(currentPlayer);
         togglePlayerHighlight();
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -165,6 +168,7 @@ function togglePlayerHighlight() {
 
         togglePlayerHighlight();
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
     function chipCreate4() {
@@ -182,6 +186,7 @@ function togglePlayerHighlight() {
         gameBoard[4].push(currentPlayer);
         togglePlayerHighlight();
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -200,6 +205,7 @@ function togglePlayerHighlight() {
         gameBoard[5].push(currentPlayer);
         togglePlayerHighlight();
         checkHorizon(gameBoard);
+        checkVertical(gameBoard);
         togglePlayer();
     }
 
@@ -216,6 +222,7 @@ function togglePlayerHighlight() {
                 counter++;
                 if (counter === 4) {
                     console.log("winner");
+                    // gameWon();
                 }
 
             }
@@ -228,11 +235,15 @@ function togglePlayerHighlight() {
         var counter = 1;
         for (var verticalPiece = 0; verticalPiece < arr[1].length; verticalPiece++) {
             if (arr[1][verticalPiece] === arr[1][verticalPiece + 1]) {
-                if (arr[horizontalPiece + 1][0] == undefined) {
+                if (arr[verticalPiece + 1][0] == undefined) {
                     return
                 }
                 console.log("I have found a match");
                 counter++
+                if (counter === 4) {
+                    console.log("winner");
+                    // gameWon();
+                }
             }
         }
     }
