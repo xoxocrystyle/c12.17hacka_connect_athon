@@ -14,7 +14,8 @@ function initializeGame() {
     $(".cell4").click(chipCreate4);
     $(".cell5").click(chipCreate5);
 
-    //intro     $("#intro").hide().fadeIn(100);
+    //intro
+    $("#intro").hide().fadeIn(100);
     $("#play").on("click", function (e) {
         e.preventDefault();
         $("#intro").fadeOut(1000);
