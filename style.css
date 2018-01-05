@@ -13,20 +13,30 @@
 
 
 .cell0,
-.cell1,
-.cell2,
-.cell3,
-.cell4,
-.cell5
+ .cell1,
+ .cell2,
+ .cell3,
+ .cell4,
+ .cell5
+ {
+     display: inline-flex;
+     flex-flow: column;
+     height: 80%;
+     width: 16%;
+     border-style: dotted;
+     border-color: orangered;
+     box-sizing: border-box;
+     position: relative;
+ }
+
+.cell0:hover,
+.cell1:hover,
+.cell2:hover,
+.cell3:hover,
+.cell4:hover,
+.cell5:hover
 {
-    display: inline-flex;
-    flex-flow: column;
-    height: 80%;
-    width: 16%;
-    border-style: dotted;
-    border-color: orangered;
-    box-sizing: border-box;
-    position: relative;
+    box-shadow: 0 0 10px lightgoldenrodyellow;
 }
 
 .chip {
@@ -69,7 +79,7 @@ body{
     font-family: VT323, monospace;
     color: white;
     background-color: black;
-
+    text-align: center;
 
 }
 
@@ -108,6 +118,36 @@ body{
     background-repeat: no-repeat;
 }
 
+
+#miss {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }
+}
+
+#mister {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }
+}
 /*intro*/
 #intro {
     #display: block;
@@ -158,6 +198,10 @@ body{
     animation: blink-animation 1s steps(5, start) infinite;
     -webkit-animation: blink-animation 1s steps(5, start) infinite;
 
+}
+
+#intro-button>#play:hover {
+    cursor:pointer;
 }
 
 @keyframes blink-animation {
@@ -236,5 +280,35 @@ body{
 
 
 
+.playerColor {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;
+
+}
+
+.playerColor2 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;
+
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    outline: 0;
+    font-size: 20px;
+    border: none;
+    font-family: VT323, monospace;
+}
+
+button:hover {
+    cursor:pointer;
+}
+
+/*.missColor {*/
+    /*text-shadow: 0 0 10px rgba(255,0,255,1), 0 0 20px rrgba(255,0,255,1), 0 0 30px rgba(255,0,255,1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;*/
+
+/*}*/
 
 
+#my_audio{
+    display:none;
+}

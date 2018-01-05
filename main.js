@@ -27,6 +27,23 @@ function initializeGame() {
         e.preventDefault();
         $("#intro").fadeOut(1000);
     });
+
+    $("#reset").on("click", function(){
+        $("#container div").empty();
+        gameBoard = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ];
+    });
+
+    $("#my_audio").get(0).play();
+
+
 }
 
 function GameBoard() {
@@ -63,6 +80,18 @@ function GameBoard() {
 
 function togglePlayer() {
     currentPlayer = 1 - currentPlayer;
+    // $("#player1").toggleClass("playerColor");
+    // $("#player2").toggleClass("playerColor2");
+}
+
+function togglePlayerHighlight() {
+    if(currentPlayer===0){
+        $("#player1").addClass("playerColor");
+        $("#player2").removeClass("playerColor2")
+    } else if (currentPlayer===1) {
+        $("#player2").addClass("playerColor2");
+        $("#player1").removeClass("playerColor")
+    }
 }
 
     function chipCreate0() {
@@ -78,6 +107,7 @@ function togglePlayer() {
         $(".cell0").append(chip)
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[0].push(currentPlayer);
+        togglePlayerHighlight();
         togglePlayer();
     }
 
@@ -94,6 +124,7 @@ function togglePlayer() {
         $(".cell1").append(chip)
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[1].push(currentPlayer);
+        togglePlayerHighlight();
         togglePlayer();
     }
 
@@ -111,6 +142,7 @@ function togglePlayer() {
         $(".cell2").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[2].push(currentPlayer);
+        togglePlayerHighlight();
         togglePlayer();
     }
 
@@ -127,6 +159,7 @@ function togglePlayer() {
         $(".cell3").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[3].push(currentPlayer);
+        togglePlayerHighlight();
         togglePlayer();
     }
     function chipCreate4() {
@@ -142,6 +175,7 @@ function togglePlayer() {
         $(".cell4").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[4].push(currentPlayer);
+        togglePlayerHighlight();
         togglePlayer();
     }
 
@@ -158,5 +192,7 @@ function togglePlayer() {
         $(".cell5").append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[5].push(currentPlayer);
+        togglePlayerHighlight();
         togglePlayer();
     }
+
