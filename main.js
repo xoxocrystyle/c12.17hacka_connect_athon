@@ -25,11 +25,13 @@ function initializeGame() {
     $(".cell6").click(chipCreate6);
     togglePlayerHighlight();
     //intro
-    $("#intro").hide().fadeIn(100);
+    $("#intro").fadeIn(100);
     $("#play").on("click", function (e) {
         e.preventDefault();
         $("#intro").fadeOut(1000);
+        // $("#character").show().fadeIn(1000);
     });
+
 
     $("#reset").on("click", function(){
         $("#container div").empty();
@@ -279,8 +281,9 @@ function checkHorizon(arr) {
                     console.log("Vertical: "+ x +" I have found a match");
                     counter++
                     if (counter === 4) {
-                        console.log("winner is at Column " + x);
-                        // gameWon();
+                        console.log("winner is at Row " + x);
+                        $("#you-won").show("slow").addClass('slide', 3000)
+                        gameWon();
                     }
                 }
             }
