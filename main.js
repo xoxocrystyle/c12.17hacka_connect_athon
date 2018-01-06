@@ -115,8 +115,8 @@ function togglePlayerHighlight() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[0].push(currentPlayer);
         togglePlayer();
-        // checkHorizon(gameBoard);
-        checkVertical(gameBoard);
+        checkHorizon(gameBoard);
+        // checkVertical(gameBoard);
         // checkRightUp(gameBoard);
         // checkUpLeft(gameBoard);
     }
@@ -135,8 +135,8 @@ function togglePlayerHighlight() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[1].push(currentPlayer);
         togglePlayer();
-        // checkHorizon(gameBoard);
-        checkVertical(gameBoard);
+        checkHorizon(gameBoard);
+        // checkVertical(gameBoard);
         // checkRightUp(gameBoard);
         // checkUpLeft(gameBoard);
 
@@ -157,8 +157,8 @@ function togglePlayerHighlight() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[2].push(currentPlayer);
         togglePlayer();
-        // checkHorizon(gameBoard);
-        checkVertical(gameBoard);
+        checkHorizon(gameBoard);
+        // checkVertical(gameBoard);
         // checkRightUp(gameBoard);
         // checkUpLeft(gameBoard);
 
@@ -178,8 +178,8 @@ function togglePlayerHighlight() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[3].push(currentPlayer);
         togglePlayer();
-        // checkHorizon(gameBoard);
-        checkVertical(gameBoard);
+        checkHorizon(gameBoard);
+        // checkVertical(gameBoard);
         // checkRightUp(gameBoard);
         // checkUpLeft(gameBoard);
 
@@ -198,8 +198,8 @@ function togglePlayerHighlight() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[4].push(currentPlayer);
         togglePlayer();
-        // checkHorizon(gameBoard);
-        checkVertical(gameBoard);
+        checkHorizon(gameBoard);
+        // checkVertical(gameBoard);
         // checkRightUp(gameBoard);
         // checkUpLeft(gameBoard);
 
@@ -219,8 +219,8 @@ function togglePlayerHighlight() {
         $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
         gameBoard[5].push(currentPlayer);
         togglePlayer();
-        // checkHorizon(gameBoard);
-        checkVertical(gameBoard);
+        checkHorizon(gameBoard);
+        // checkVertical(gameBoard);
         // checkRightUp(gameBoard);
         // checkUpLeft(gameBoard);
 
@@ -231,7 +231,9 @@ function chipCreate6() {
     if(dropLevel >= 6){
         return;
     }
+    console.log(dropLevel);
     var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+
     var chip = $('<div>', {
         class: 'chip',
         class:'player' + currentPlayer
@@ -239,39 +241,41 @@ function chipCreate6() {
     $(".cell6").append(chip);
     $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
     gameBoard[6].push(currentPlayer);
+    var start = gameBoard[6][gameBoard[6].length - 1];
+    console.log(start);
     togglePlayer();
-    // checkHorizon(gameBoard);
-    checkVertical(gameBoard);
+    checkHorizon(gameBoard);
+    // checkVertical(gameBoard);
     // checkRightUp(gameBoard);
     // checkUpLeft(gameBoard);
 
 }
-//function game winner 1
-    function checkHorizon(arr) {
-        var counter = 1;
-        for (var horizontalPiece = 0; horizontalPiece < arr.length - 1; horizontalPiece++) {
-            if (arr[horizontalPiece + 1][0] == undefined) {
-                return;
-            }
-            if (arr[horizontalPiece][0] === arr[horizontalPiece + 1][0]) {
-                console.log("Horizontal: I have found a match");
-                counter++;
-                if (counter === 4) {
-                    console.log("winner");
-                    $("#you-won").show("slow").addClass('slide', 1000)
-                    // gameWon();
-                }
 
+function checkHorizon(arr) {
+    var counter = 1;
+    for(var x = 0; x < arr.length - 1; x++){
+        counter = 1;
+        for(var i = 0; i < arr.length -1; i++){
+            if(arr[i +1][x] !== undefined){
+                if(arr[i][x] === arr[i +1][x]){
+                    counter++;
+                    if(counter === 4){
+                        console.log("winner is at Row" + x );
+                        counter = 1;
+                    }
+                }else{
+                    counter= 1;
+                }
             }
-         counter--;
         }
     }
+}
 
 ///////////VERTICAL IS WORKING PROPERLY///////////////////////////////////
     function checkVertical(arr) {
         var counter = 1;
         for(var x = 0; x < arr.length; x++) {
-            counter = 1;
+            counter = 1; ///counter reset every time
             for (var verticalPiece = 0; verticalPiece < arr[x].length - 1; verticalPiece++) {
                 if (arr[x][verticalPiece] === arr[x][verticalPiece + 1]) {
                     console.log("Vertical: "+ x +" I have found a match");
