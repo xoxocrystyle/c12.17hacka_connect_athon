@@ -156,6 +156,10 @@ body{
 #intro {
     #display: block;
     #vertical-align: top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     background: url("https://i.imgur.com/obojRZ5.gif"), no-repeat;
     position: absolute;
     top: 50%;
@@ -175,10 +179,13 @@ body{
     bottom: 80%;
 }
 
+#intro-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #intro-button>#play {
-    position: fixed;
-    bottom: 55%;
-    left: 37%;
     z-index: 1000;
     font-size: 75px;
     font-family: VT323, monospace;
@@ -220,7 +227,6 @@ body{
 }
 
 #title {
-    position: fixed;
     bottom: 10%;
     left: 30%;
     z-index: 1000;
@@ -235,7 +241,7 @@ body{
     border: none;
     color: yellow;
     text-decoration: normal;
-    /*text-align: center;*/
+    text-align: center;
     -o-text-overflow: clip;
     text-overflow: clip;
     white-space: pre;
@@ -252,34 +258,32 @@ body{
     text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;
 }
 
-/*#you-won, #you-lose{*/
-    /*position: fixed;*/
-    /*bottom: 10%;*/
-    /*left: 30%;*/
-    /*z-index: 1000;*/
-    /*font-size: 150px;*/
-    /*text-align: center;*/
-    /*font-family: VT323, monospace;*/
-    /*!*display: inline-block;*!*/
-    /*-webkit-box-sizing: border-box;*/
-    /*-moz-box-sizing: border-box;*/
-    /*box-sizing: border-box;*/
-    /*padding: 10px;*/
-    /*border: none;*/
-    /*color: yellow;*/
-    /*text-decoration: normal;*/
-    /*!*text-align: center;*!*/
-    /*-o-text-overflow: clip;*/
-    /*text-overflow: clip;*/
-    /*white-space: pre;*/
-    /*text-shadow: 0 0 10px rgba(255,255,0,0.3) , 0 0 20px rgba(255,255,0,0.3) , 0 0 30px rgba(255,255,0,0.3), 0 0 40px #000000 , 0 0 70px #2d242c , 0 0 80px #050404 , 0 0 100px rgba(255,255,0,0.3);*/
-    /*-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
-    /*-moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
-    /*-o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
-    /*transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
-    /*background: transparent;*/
+#you-won {
+    position: fixed;
+    bottom: 15%;
+    z-index: 1000;
+    font-size: 7rem;
+    text-align: center;
+    font-family: VT323, monospace;
+    display:none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+    color: yellow;
+    text-decoration: normal;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    white-space: pre;
+    text-shadow: 0 0 10px rgba(255,255,0,0.3) , 0 0 20px rgba(255,255,0,0.3) , 0 0 30px rgba(255,255,0,0.3), 0 0 40px #000000 , 0 0 70px #2d242c , 0 0 80px #050404 , 0 0 100px rgba(255,255,0,0.3);
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    background: transparent;
 
-/*}*/
+}
 
 
 
@@ -316,3 +320,55 @@ button:hover {
 #my_audio{
     display:none;
 }
+
+/*choose players*/
+#choose {
+    color: white;
+    font-size: 4rem;
+    font-family: 'VT323', monospace;
+    text-align: center;
+}
+
+#character {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#players {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+#pacmanrunning{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#players img:hover {
+    box-shadow: 0 0 10px lightgoldenrodyellow;
+}
+
+#players img{
+    height: 200px;
+    width: 200px;
+
+}
+
+/*.playerchoice1 img,*/
+/*.playerchoice2 img,*/
+/*.playerchoice3 img,*/
+/*.playerchoice4 img {*/
+    /*width: 8%;*/
+    /*height: 8%;*/
+/*}*/
+
+

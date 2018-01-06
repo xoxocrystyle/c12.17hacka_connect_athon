@@ -25,11 +25,13 @@ function initializeGame() {
     $(".cell6").click(chipCreate6);
     togglePlayerHighlight();
     //intro
-    $("#intro").hide().fadeIn(100);
+    $("#intro").fadeIn(100);
     $("#play").on("click", function (e) {
         e.preventDefault();
         $("#intro").fadeOut(1000);
+        // $("#character").show().fadeIn(1000);
     });
+
 
     $("#reset").on("click", function(){
         $("#container div").empty();
@@ -244,7 +246,7 @@ function chipCreate6() {
     // checkUpLeft(gameBoard);
 
 }
-
+//function game winner 1
     function checkHorizon(arr) {
         var counter = 1;
         for (var horizontalPiece = 0; horizontalPiece < arr.length - 1; horizontalPiece++) {
@@ -256,6 +258,7 @@ function chipCreate6() {
                 counter++;
                 if (counter === 4) {
                     console.log("winner");
+                    $("#you-won").show("slow").addClass('slide', 1000)
                     // gameWon();
                 }
 
@@ -275,7 +278,8 @@ function chipCreate6() {
                     counter++
                     if (counter === 4) {
                         console.log("winner is at Row " + x);
-                        // gameWon();
+                        $("#you-won").show("slow").addClass('slide', 3000)
+                        gameWon();
                     }
                 }
             }
