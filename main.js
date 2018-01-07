@@ -1,6 +1,8 @@
 $(document).ready(initializeGame);
 var game = null;
 var currentPlayer = 0;
+var col;
+var row;
 //gameBoard[0].push[0]
 var gameBoard = [
     [],
@@ -26,7 +28,7 @@ function initializeGame() {
     togglePlayerHighlight();
     //intro
     $("#intro").fadeIn(100);
-    $("#play").on("click", function (e) {
+    $("#play").on("mouseover", function (e) {
         e.preventDefault();
         $("#intro").fadeOut(1000);
         // $("#character").show().fadeIn(1000);
@@ -101,133 +103,147 @@ function togglePlayerHighlight() {
 
 }
 
-    function chipCreate0() {
-        var dropLevel = this.childElementCount;
+function chipCreate0() {
+    var dropLevel = this.childElementCount;
+    row = dropLevel;
+    col = 0;
+    if(dropLevel >= 6){
+        return;
+    }
+    var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    var chip = $('<div>', {
+        class: 'chip',
+        class:'player' + currentPlayer
+    });
+    $(".cell0").append(chip)
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+    gameBoard[0].push(currentPlayer);
+    togglePlayer();
+    checkHorizon(gameBoard);
+    checkVertical(gameBoard);
+    // checkRightUp(gameBoard);
+    checkUpRight(gameBoard);
+}
+
+function chipCreate1() {
+    var dropLevel = this.childElementCount;
+    row = dropLevel;
+    col = 1;
+    if(dropLevel >= 6){
+        return;
+    }
+    var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    var chip = $('<div>', {
+        class: 'chip',
+        class:'player' + currentPlayer
+    });
+    $(".cell1").append(chip)
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+    gameBoard[1].push(currentPlayer);
+    togglePlayer();
+    checkHorizon(gameBoard);
+    checkVertical(gameBoard);
+    // checkRightUp(gameBoard);
+    checkUpRight(gameBoard);
+
+}
+
+function chipCreate2() {
+    var dropLevel = this.childElementCount;
+    row = dropLevel;
+    col = 2;
+    if(dropLevel >= 6){
+        return;
+    }
+    var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    var dropLevel = this.childElementCount;
+    var chip = $('<div>', {
+        class: 'chip',
+        class:'player' + currentPlayer
+    });
+    $(".cell2").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+    gameBoard[2].push(currentPlayer);
+    togglePlayer();
+    checkHorizon(gameBoard);
+    checkVertical(gameBoard);
+    // checkRightUp(gameBoard);
+    checkUpRight(gameBoard);
+
+}
+
+function chipCreate3() {
+    var dropLevel = this.childElementCount;
+    row = dropLevel;
+    col = 3;
         if(dropLevel >= 6){
-            return;
+        return;
         }
-        var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
-        var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
-        });
-        $(".cell0").append(chip)
-        $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
-        gameBoard[0].push(currentPlayer);
-        togglePlayer();
-        checkHorizon(gameBoard);
-        // checkVertical(gameBoard);
-        // checkRightUp(gameBoard);
-        // checkUpLeft(gameBoard);
+    var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    var chip = $('<div>', {
+        class: 'chip',
+        class:'player' + currentPlayer
+    });
+    $(".cell3").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+    gameBoard[3].push(currentPlayer);
+    togglePlayer();
+    checkHorizon(gameBoard);
+    checkVertical(gameBoard);
+    // checkRightUp(gameBoard);
+    checkUpRight(gameBoard);
+
+}
+function chipCreate4() {
+    var dropLevel = this.childElementCount;
+    row = dropLevel;
+    col =4;
+    if(dropLevel >= 6){
+        return;
     }
+    var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    var chip = $('<div>', {
+        class: 'chip',
+        class:'player' + currentPlayer
+    });
+    $(".cell4").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+    gameBoard[4].push(currentPlayer);
+    togglePlayer();
+    checkHorizon(gameBoard);
+    checkVertical(gameBoard);
+    // checkRightUp(gameBoard);
+    checkUpRight(gameBoard);
 
-    function chipCreate1() {
-        var dropLevel = this.childElementCount;
-        if(dropLevel >= 6){
-            return;
-        }
-        var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
-        var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
-        });
-        $(".cell1").append(chip)
-        $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
-        gameBoard[1].push(currentPlayer);
-        togglePlayer();
-        checkHorizon(gameBoard);
-        // checkVertical(gameBoard);
-        // checkRightUp(gameBoard);
-        // checkUpLeft(gameBoard);
+}
 
+function chipCreate5() {
+    var dropLevel = this.childElementCount;
+    row = dropLevel;
+    col = 5;
+    if(dropLevel >= 6){
+        return;
     }
+    var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    var chip = $('<div>', {
+        class: 'chip',
+        class:'player' + currentPlayer
+    });
+    $(".cell5").append(chip);
+    $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
+    gameBoard[5].push(currentPlayer);
+    togglePlayer();
+    checkHorizon(gameBoard);
+    checkVertical(gameBoard);
+    // checkRightUp(gameBoard);
+    checkUpRight(gameBoard);
 
-    function chipCreate2() {
-        var dropLevel = this.childElementCount;
-        if(dropLevel >= 6){
-            return;
-        }
-        var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
-        var dropLevel = this.childElementCount;
-        var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
-        });
-        $(".cell2").append(chip);
-        $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
-        gameBoard[2].push(currentPlayer);
-        togglePlayer();
-        checkHorizon(gameBoard);
-        // checkVertical(gameBoard);
-        // checkRightUp(gameBoard);
-        // checkUpLeft(gameBoard);
-
-    }
-
-    function chipCreate3() {
-        var dropLevel = this.childElementCount;
-            if(dropLevel >= 6){
-            return;
-            }
-        var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
-        var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
-        });
-        $(".cell3").append(chip);
-        $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
-        gameBoard[3].push(currentPlayer);
-        togglePlayer();
-        checkHorizon(gameBoard);
-        // checkVertical(gameBoard);
-        // checkRightUp(gameBoard);
-        // checkUpLeft(gameBoard);
-
-    }
-    function chipCreate4() {
-        var dropLevel = this.childElementCount;
-        if(dropLevel >= 6){
-            return;
-        }
-        var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
-        var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
-        });
-        $(".cell4").append(chip);
-        $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
-        gameBoard[4].push(currentPlayer);
-        togglePlayer();
-        checkHorizon(gameBoard);
-        // checkVertical(gameBoard);
-        // checkRightUp(gameBoard);
-        // checkUpLeft(gameBoard);
-
-    }
-
-    function chipCreate5() {
-        var dropLevel = this.childElementCount;
-        if(dropLevel >= 6){
-            return;
-        }
-        var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
-        var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
-        });
-        $(".cell5").append(chip);
-        $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
-        gameBoard[5].push(currentPlayer);
-        togglePlayer();
-        checkHorizon(gameBoard);
-        // checkVertical(gameBoard);
-        // checkRightUp(gameBoard);
-        // checkUpLeft(gameBoard);
-
-    }
+}
 
 function chipCreate6() {
     var dropLevel = this.childElementCount;
+    row = dropLevel;
+    col = 6;
     if(dropLevel >= 6){
         return;
     }
@@ -245,12 +261,14 @@ function chipCreate6() {
     console.log(start);
     togglePlayer();
     checkHorizon(gameBoard);
-    // checkVertical(gameBoard);
+    checkVertical(gameBoard);
     // checkRightUp(gameBoard);
-    // checkUpLeft(gameBoard);
+    checkUpRight(gameBoard);
 
 }
 
+
+//////////////////HORIZON IS WORKING PROPERLY////////////////////////////////
 function checkHorizon(arr) {
     var counter = 1;
     for(var x = 0; x < arr.length - 1; x++){
@@ -261,7 +279,9 @@ function checkHorizon(arr) {
                     counter++;
                     if(counter === 4){
                         console.log("winner is at Row" + x );
+                        $("#you-won").show("slow").addClass('slide', 3000);
                         counter = 1;
+
                     }
                 }else{
                     counter= 1;
@@ -279,35 +299,42 @@ function checkHorizon(arr) {
             for (var verticalPiece = 0; verticalPiece < arr[x].length - 1; verticalPiece++) {
                 if (arr[x][verticalPiece] === arr[x][verticalPiece + 1]) {
                     console.log("Vertical: "+ x +" I have found a match");
-                    counter++
-                    if (counter === 4) {
-                        console.log("winner is at Row " + x);
-                        $("#you-won").show("slow").addClass('slide', 3000)
-                        gameWon();
-                    }
-                }
-            }
-        }
-    }
-//////////////////////////CONSOLE ERROR CANT READ PROPERTY OF UNDEFINED//////////////////////
-    function checkUpLeft(arr) {
-        var counter = 1;
-        for (var col = 0; col < arr.length;) {
-            for (var row = 0; row < arr[col].length;) {
-                if (arr[col][row] == arr[col - 1][row + 1]) {
                     counter++;
-                    col++;
-                    row++;
+                    if (counter === 4) {
+                        console.log("winner is at Col " + x);
+                        $("#you-won").show("slow").addClass('slide', 3000);
+                        counter = 1;
+
+                    }
+                }else{
+                counter = 1;
                 }
             }
+
         }
-
-
     }
+//////////////////////////WORKS TO CHECK FROM BOTTOM TO TOP LEFT TO RIGHT BUT NOT REVERSE//////////////////////
+function checkUpRight(arr) {
+    var counter = 1;
+    for (var x = 1; x < arr.length - col; x++) {
+        if (arr[col + x][row + x] !== undefined) {
+            if (arr[col][row] === arr[col + x][row + x]) {
+                console.log('yes');
+                counter++;
+                if (counter === 4) {
+                    console.log('UpRight winner');
+                    $("#you-won").show("slow").addClass('slide', 3000);
+                    counter = 1;
 
+                }
+            }
+
+        }
+    }
+}
 ///////////THIS RUNS BUT DOES NOT FIND A MATCH///////////////////////////////////
 
-function checkRightUp(arr){
+function checkLeftUp(arr){
   var counter =1;
   for(var col=0; col<arr.length; col++){
     for(var row=0; row<arr[col]; row++ ){
