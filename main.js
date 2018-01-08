@@ -18,6 +18,7 @@ var gameBoard = [
 function initializeGame() {
     game = new GameBoard();
     game.init();
+    ///click handlers for each column array////
     $(".cell0").click(chipCreate);
     $(".cell1").click(chipCreate);
     $(".cell2").click(chipCreate);
@@ -34,7 +35,7 @@ function initializeGame() {
         // $("#character").show().fadeIn(1000);
     });
 
-
+    //// reset button function///
     $("#reset").on("click", function(){
         // $("#container div").empty();
         $(".cell0").empty();
@@ -59,7 +60,7 @@ function initializeGame() {
 
     // $("#my_audio").get(0).play();
 }
-
+/////Dom creation with jquery to create game area///////
 function GameBoard() {
     this.init = function () {
         this.generateBoard();
@@ -89,7 +90,7 @@ function togglePlayer() {
     // $("#player1").toggleClass("playerColor");
     // $("#player2").toggleClass("playerColor2");
 }
-
+///highlights left player on their turn //////
 function togglePlayerHighlight() {
     if(currentPlayer===0){
         $("#player1").addClass("playerColor");
@@ -100,10 +101,11 @@ function togglePlayerHighlight() {
     }
 
 }
-
+//// o click function called to create game pieces and animates to correct position///
 function chipCreate() {
     totalCount++;
     var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    ////This will trigger Ghost to fall into random place in game//////
     if (totalCount === 10 || totalCount === 19 || totalCount === 30){
         var ghost = $('<div>', {
             class: 'chip',
@@ -122,6 +124,7 @@ function chipCreate() {
         $(ghost).animate({'top': dropPositions[drop.length-1]}, 1000);
 
     }else {
+        ////normal player chip piece creation on column click///
         var dropLevel = this.childElementCount;
         row = dropLevel;
         var column = $(this).attr("class");
@@ -135,6 +138,7 @@ function chipCreate() {
         });
         $("." + columnNum).append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 1000);
+        ///Push to correct array position and get col variable to pass into check match functions
         if (column === 'cell0') {
             col = 0;
             gameBoard[0].push(currentPlayer);
@@ -164,6 +168,7 @@ function chipCreate() {
             gameBoard[6].push(currentPlayer);
         }
         togglePlayer();
+        //check for player chip match functions
         checkHorizon(gameBoard);
         checkVertical(gameBoard);
         checkUpLeft(gameBoard);
