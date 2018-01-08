@@ -29,6 +29,7 @@
      border-top-color: black;
      box-sizing: border-box;
      position: relative;
+     cursor: pointer;
 
  }
 

@@ -12,7 +12,6 @@ var gameBoard = [
     [],
     [],
     []
-
 ];
 
 function initializeGame() {
