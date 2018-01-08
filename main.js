@@ -3,6 +3,7 @@ var game = null;
 var currentPlayer = 0;
 var col;
 var row;
+var totalCount = 0;
 var gameBoard = [
     [],
     [],
@@ -122,7 +123,7 @@ function chipCreate0() {
     checkVertical(gameBoard);
     checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
-    // downRight(gameBoard);
+    totalCount++;
 }
 
 function chipCreate1() {
@@ -145,7 +146,7 @@ function chipCreate1() {
     checkVertical(gameBoard);
     checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
-    // downRight(gameBoard);
+    totalCount++;
 
 }
 
@@ -170,7 +171,7 @@ function chipCreate2() {
     checkVertical(gameBoard);
     checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
-    // downRight(gameBoard);
+    totalCount++;
 
 }
 
@@ -194,7 +195,7 @@ function chipCreate3() {
     checkVertical(gameBoard);
     checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
-    // downRight(gameBoard);
+    totalCount++;
 
 }
 function chipCreate4() {
@@ -217,6 +218,7 @@ function chipCreate4() {
     checkVertical(gameBoard);
     checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
+    totalCount++;
 }
 
 function chipCreate5() {
@@ -239,6 +241,7 @@ function chipCreate5() {
     checkVertical(gameBoard);
     checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
+    totalCount++;
 }
 
 function chipCreate6() {
@@ -264,6 +267,7 @@ function chipCreate6() {
     checkVertical(gameBoard);
     checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
+    totalCount++;
 }
 
 

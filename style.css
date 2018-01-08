@@ -373,3 +373,15 @@ button:hover {
 /*}*/
 
 
+.ghost {
+    background-image: url('images/redGhost.png');
+    position: absolute;
+    padding: 0;
+    height: 16%;
+    width:100%;
+    background-size:contain;
+    /*margin: 2% 0 0 1%;*/
+    background-repeat: no-repeat;
+    margin: auto;
+
+}
