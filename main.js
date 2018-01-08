@@ -30,8 +30,18 @@ function initializeGame() {
     $("#play").on("mouseover", function (e) {
         e.preventDefault();
         $("#intro").fadeOut(1000);
-        // $("#character").show().fadeIn(1000);
+        $("#character1").show().fadeIn(1000);
+        $(".playerchoice1").on("click", function() {
+            $(this).addClass(".player0");
+            $("#character1").fadeOut(1000);
+            $("#character2").show().fadeIn(1000);
+            $(".playerchoice2").on("click", function() {
+                $(this).addClass(".player1");
+                $("#character2").fadeOut(1000);
+            });
+        });
     });
+
 
 
     $("#reset").on("click", function(){
@@ -44,9 +54,9 @@ function initializeGame() {
             [],
             []
         ];
+
     });
 
-    $("#my_audio").get(0).play();
 
 
 }
