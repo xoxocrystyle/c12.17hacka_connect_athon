@@ -136,6 +136,7 @@ function chipCreate() {
     }else {
         ////normal player chip piece creation on column click///
         var dropLevel = this.childElementCount;
+        console.log("clicked player: " + currentPlayer);
         row = dropLevel;
         var column = $(this).attr("class");
         columnNum = column;

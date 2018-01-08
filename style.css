@@ -115,7 +115,7 @@ body{
 }
 
 .player0 {
-    /*background:url("https://upload.wikimedia.org/wikipedia/en/a/a8/Original_PacMan.png");*/
+    background:url("https://upload.wikimedia.org/wikipedia/en/a/a8/Original_PacMan.png");
     position: absolute;
     padding: 0;
     height: 16%;
@@ -128,7 +128,7 @@ body{
 
 .player1 {
     background-color: red;
-    /*background: url("https://i.imgur.com/DYjbDHp.png");*/
+    background: url("https://i.imgur.com/DYjbDHp.png");
     position: absolute;
     padding: 0;
     height: 16%;
