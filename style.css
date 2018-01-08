@@ -2,7 +2,7 @@
     height: 100%;
     width: 54%;
     background:url("https://i.pinimg.com/originals/cf/43/08/cf430887e595326299b5fdf85a75b107.jpg"), #000;
-    background-size: auto;
+    background-size: cover;
     display: inline-block;
     vertical-align:top;
     margin: 0;
@@ -78,6 +78,8 @@ body{
     padding:0;
 }
 #stats{
+    display: flex;
+   flex-direction: column;
     width: 20%;
     height: 100%;
     display: inline-block;
@@ -100,8 +102,20 @@ body{
 
 }
 
+.playerchoice1,
+.playerchoice2,
+.playerchoice3,
+.playerchoice4{
+    padding: 0;
+    height: 16%;
+    width:100%;
+    background-size:contain;
+    /*margin: 2% 0 0 1%;*/
+    background-repeat: no-repeat;
+}
+
 .player0 {
-    background:url("https://upload.wikimedia.org/wikipedia/en/a/a8/Original_PacMan.png");
+    /*background:url("https://upload.wikimedia.org/wikipedia/en/a/a8/Original_PacMan.png");*/
     position: absolute;
     padding: 0;
     height: 16%;
@@ -114,7 +128,7 @@ body{
 
 .player1 {
     background-color: red;
-    background: url("https://i.imgur.com/DYjbDHp.png");
+    /*background: url("https://i.imgur.com/DYjbDHp.png");*/
     position: absolute;
     padding: 0;
     height: 16%;
@@ -331,7 +345,8 @@ button:hover {
     text-align: center;
 }
 
-#character {
+#character1,
+#character2 {
     display: flex;
     align-items: center;
     justify-content: center;
