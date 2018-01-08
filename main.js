@@ -3,7 +3,6 @@ var game = null;
 var currentPlayer = 0;
 var col;
 var row;
-//gameBoard[0].push[0]
 var gameBoard = [
     [],
     [],
@@ -121,8 +120,9 @@ function chipCreate0() {
     togglePlayer();
     checkHorizon(gameBoard);
     checkVertical(gameBoard);
-    // checkRightUp(gameBoard);
+    checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
+    // downRight(gameBoard);
 }
 
 function chipCreate1() {
@@ -143,8 +143,9 @@ function chipCreate1() {
     togglePlayer();
     checkHorizon(gameBoard);
     checkVertical(gameBoard);
-    // checkRightUp(gameBoard);
+    checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
+    // downRight(gameBoard);
 
 }
 
@@ -167,8 +168,9 @@ function chipCreate2() {
     togglePlayer();
     checkHorizon(gameBoard);
     checkVertical(gameBoard);
-    // checkRightUp(gameBoard);
+    checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
+    // downRight(gameBoard);
 
 }
 
@@ -190,8 +192,9 @@ function chipCreate3() {
     togglePlayer();
     checkHorizon(gameBoard);
     checkVertical(gameBoard);
-    // checkRightUp(gameBoard);
+    checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
+    // downRight(gameBoard);
 
 }
 function chipCreate4() {
@@ -212,9 +215,8 @@ function chipCreate4() {
     togglePlayer();
     checkHorizon(gameBoard);
     checkVertical(gameBoard);
-    // checkRightUp(gameBoard);
+    checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
-
 }
 
 function chipCreate5() {
@@ -235,9 +237,8 @@ function chipCreate5() {
     togglePlayer();
     checkHorizon(gameBoard);
     checkVertical(gameBoard);
-    // checkRightUp(gameBoard);
+    checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
-
 }
 
 function chipCreate6() {
@@ -258,17 +259,15 @@ function chipCreate6() {
     $(chip).animate({'top': dropPositions[dropLevel]}, 2000);
     gameBoard[6].push(currentPlayer);
     var start = gameBoard[6][gameBoard[6].length - 1];
-    console.log(start);
     togglePlayer();
     checkHorizon(gameBoard);
     checkVertical(gameBoard);
-    // checkRightUp(gameBoard);
+    checkUpLeft(gameBoard);
     checkUpRight(gameBoard);
-
 }
 
 
-//////////////////HORIZON IS WORKING PROPERLY////////////////////////////////
+//////////////////HORIZON MATCH CHECKS ////////////////////////////////
 function checkHorizon(arr) {
     var counter = 1;
     for(var x = 0; x < arr.length - 1; x++){
@@ -281,7 +280,6 @@ function checkHorizon(arr) {
                         console.log("winner is at Row" + x );
                         $("#you-won").show("slow").addClass('slide', 3000);
                         counter = 1;
-
                     }
                 }else{
                     counter= 1;
@@ -291,20 +289,18 @@ function checkHorizon(arr) {
     }
 }
 
-///////////VERTICAL IS WORKING PROPERLY///////////////////////////////////
+///////////VERTICAL MATCH CHECKS///////////////////////////////////
     function checkVertical(arr) {
         var counter = 1;
         for(var x = 0; x < arr.length; x++) {
             counter = 1; ///counter reset every time
             for (var verticalPiece = 0; verticalPiece < arr[x].length - 1; verticalPiece++) {
                 if (arr[x][verticalPiece] === arr[x][verticalPiece + 1]) {
-                    console.log("Vertical: "+ x +" I have found a match");
                     counter++;
                     if (counter === 4) {
                         console.log("winner is at Col " + x);
                         $("#you-won").show("slow").addClass('slide', 3000);
                         counter = 1;
-
                     }
                 }else{
                 counter = 1;
@@ -313,51 +309,73 @@ function checkHorizon(arr) {
 
         }
     }
-//////////////////////////WORKS TO CHECK FROM BOTTOM TO TOP LEFT TO RIGHT BUT NOT REVERSE//////////////////////
+///////////////////////////THIS CHECKS FOR MATCH DIAGONAL FROM BOTTOM UP TO RIGHT//////////////////////
 function checkUpRight(arr) {
     var counter = 1;
-    for (var x = 1; x < arr.length - col; x++) {
-        if (arr[col + x][row + x] !== undefined) {
+    for (var x = 1; x < arr.length; x++) {
+        if(col + x < 7 && row + x < 6) {
             if (arr[col][row] === arr[col + x][row + x]) {
-                console.log('yes');
+                console.log('yes Up Right');
                 counter++;
                 if (counter === 4) {
                     console.log('UpRight winner');
                     $("#you-won").show("slow").addClass('slide', 3000);
                     counter = 1;
-
                 }
             }
+        }
+        if ((row - x > -1 && col - x > -1)) {
+            if (arr[col][row] === arr[col - x][row - x]) {
+                console.log('yes Up Right');
+                counter++;
+                if (counter === 4) {
+                    console.log('LeftUp winner');
+                    $("#you-won").show("slow").addClass('slide', 3000);
+                    counter = 1;
+                }
+            }
+        }
+            if (counter === 1) {
+                return;
+            }
+        }
+    }
 
+///////////THIS CHECKS FOR MATCH DIAGONAL FROM BOTTOM UP TO LEFT /////////////////////////////////
+function checkUpLeft(arr){
+    var counter = 1;
+    for (var x = 1; x < arr.length; x++) {
+        if(row + x < 6 && col - x > -1) {
+            if (arr[col][row] === arr[col - x][row + x]) {
+                counter++;
+                if (counter === 4) {
+                    console.log('LeftUp winner');
+                    $("#you-won").show("slow").addClass('slide', 3000);
+                    counter = 1;
+                }
+            }
+        }
+        if ((row - x > -1 && col + x < 7)) {
+            if (arr[col][row] === arr[col + x][row - x]) {
+                console.log('LU else if yes');
+                counter++;
+                if (counter === 4) {
+                    console.log('LeftUp winner');
+                    $("#you-won").show("slow").addClass('slide', 3000);
+                    counter = 1;
+                }
+            }
+        }
+        if (counter === 1) {
+            return;
         }
     }
 }
-///////////THIS RUNS BUT DOES NOT FIND A MATCH///////////////////////////////////
 
-function checkLeftUp(arr){
-  var counter =1;
-  for(var col=0; col<arr.length; col++){
-    for(var row=0; row<arr[col]; row++ ){
-      if(arr[col][row] === arr[col + 1][row +1]){
-          console.log("RightUp: I have a match");
-        counter++;
-      }
-    }
-   }
-}
-////////////////INFINITE LOOP NEEDS TO BE FIXED//////////////////////
-// function checkUpRight(arr) {
-//     var counter = 1;
-//     for (var col = 0; col < arr.length;) {
-//         for (var row = 0; row < arr[col].length;) {
-//             if (arr[col][row] == arr[col + 1][row + 1]) {
-//                 counter++;
-//                 col++;
-//                 row++;
-//             }
-//         }
-//     }
-//
-//
-// }
-/////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
