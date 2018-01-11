@@ -27,7 +27,7 @@ function eventHandlers(){
     $("#play").on("mouseover", startGameIntro);
     $(".playerchoice1").on("click", playerChoice1);
     $(".playerchoice2").on("click", playerChoice2);
-    $("#reset").on("click", reset);
+    $("#reset").on("click", restart);
 }
 /////Dom creation with jquery to create game area///////
 function GameBoard() {
@@ -57,12 +57,18 @@ function startGameIntro(e) {
 }
 
 function playerChoice1(){
+    var Image1 = $(event.target).attr('src');
+    var appendImg = '<img src="' + Image1 + '">';
+    $("#mister").append(appendImg);
     $(this).addClass(".player0");
     $('#choose').text('Click to Choose player 1!');
     $('.playerchoice1').css('opacity', '0');
 }
 
 function playerChoice2(){
+    var Image2 = $(event.target).attr('src');
+    var appendImg = '<img src="' + Image2 + '">';
+    $("#miss").append(appendImg);
     $(this).addClass(".player1");
     $('.playerchoice2').css('opacity', '0');
     $("#characters").hide();
@@ -134,7 +140,7 @@ function chipCreate() {
             return;
         }
         var chip = $('<div>', {
-            class: 'peach',
+            class: 'player'+ currentPlayer,
         });
         $("." + columnNum).append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 1000);
@@ -218,6 +224,7 @@ function checkHorizon(arr) {
 
         }
     }
+
 ///////////////////////////THIS CHECKS FOR MATCH DIAGONAL FROM BOTTOM UP TO RIGHT//////////////////////
 function checkUpRight(arr) {
     var counter = 1;
