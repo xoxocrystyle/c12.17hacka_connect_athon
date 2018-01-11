@@ -4,20 +4,19 @@ var currentPlayer = 0;
 var col;
 var row;
 var totalCount = 0;
-var gameBoard = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-];
+var gameBoard = [[], [], [], [], [], [], []];
 
 function initializeGame() {
     game = new GameBoard();
     game.init();
-    ///click handlers for each column array////
+    $("#container").hide();
+    $(".stats").hide();
+    togglePlayerHighlight();
+    eventHandlers();
+    restart();
+}
+
+function eventHandlers(){
     $(".cell0").click(chipCreate);
     $(".cell1").click(chipCreate);
     $(".cell2").click(chipCreate);
@@ -25,50 +24,10 @@ function initializeGame() {
     $(".cell4").click(chipCreate);
     $(".cell5").click(chipCreate);
     $(".cell6").click(chipCreate);
-    togglePlayerHighlight();
-    //intro
-    $("#intro").fadeIn(100);
-    $("#play").on("mouseover", function (e) {
-        e.preventDefault();
-        $("#intro").fadeOut(1000);
-        $("#character1").show().fadeIn(1000);
-        $(".playerchoice1").on("click", function() {
-            $(this).addClass(".player0");
-            $("#character1").fadeOut(1000);
-            $("#character2").show().fadeIn(1000);
-            $(".playerchoice2").on("click", function() {
-                $(this).addClass(".player1");
-                $("#character2").fadeOut(1000);
-            });
-        });
-    });
-
-    //// reset button function///
-
-    $("#reset").on("click", function(){
-        // $("#container div").empty();
-        $(".cell0").empty();
-        $(".cell1").empty();
-        $(".cell2").empty();
-        $(".cell3").empty();
-        $(".cell4").empty();
-        $(".cell5").empty();
-        $(".cell6").empty();
-        $("#you-won").fadeOut();
-        totalCount = 0;
-        gameBoard = [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ];
-
-    });
-
-
+    $("#play").on("mouseover", startGameIntro);
+    $(".playerchoice1").on("click", playerChoice1);
+    $(".playerchoice2").on("click", playerChoice2);
+    $("#reset").on("click", reset);
 }
 /////Dom creation with jquery to create game area///////
 function GameBoard() {
@@ -87,10 +46,42 @@ function GameBoard() {
                 class: 'cell'+col,
             });
             colNum.appendTo("#container");
-
         }
-
     }
+}
+
+function startGameIntro(e) {
+    e.preventDefault();
+    $("#intro").fadeOut(1000);
+    $("#character1").show().fadeIn(1000);
+}
+
+function playerChoice1(){
+    $(this).addClass(".player0");
+    $('#choose').text('Click to Choose player 1!');
+    $('.playerchoice1').css('opacity', '0');
+}
+
+function playerChoice2(){
+    $(this).addClass(".player1");
+    $('.playerchoice2').css('opacity', '0');
+    $("#characters").hide();
+    $("#container").fadeIn();
+    $(".stats").fadeIn();
+}
+
+function restart(){
+    $(".cell0").empty();
+    $(".cell1").empty();
+    $(".cell2").empty();
+    $(".cell3").empty();
+    $(".cell4").empty();
+    $(".cell5").empty();
+    $(".cell6").empty();
+    $("#you-won").fadeOut();
+    totalCount = 0;
+    gameBoard = [[], [], [], [], [], [], []];
+
 }
 
 function togglePlayer() {
@@ -118,7 +109,6 @@ function chipCreate() {
     ////This will trigger Ghost to fall into random place in game//////
     if (totalCount === 10 || totalCount === 19 || totalCount === 30){
         var ghost = $('<div>', {
-            class: 'chip',
             class: 'ghost'
         });
         var ghostCol = [".cell0", ".cell1", ".cell2", ".cell3", ".cell4", ".cell5", ".cell6"];
@@ -144,8 +134,7 @@ function chipCreate() {
             return;
         }
         var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
+            class: 'peach',
         });
         $("." + columnNum).append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 1000);
