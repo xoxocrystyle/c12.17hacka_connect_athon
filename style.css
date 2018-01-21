@@ -340,31 +340,31 @@ button:hover {
     width: 200px;
 }
 
-.player0,
-.pacman {
-    background:url("images/Original_PacMan.png");
-    position: absolute;
-    padding: 0;
-    height: 16%;
-    width:100%;
-    background-size:contain;
-    /*margin: 2% 0 0 1%;*/
-    background-repeat: no-repeat;
-    margin: auto;
-}
+/*.player0,*/
+/*.pacman {*/
+    /*background:url("images/Original_PacMan.png");*/
+    /*position: absolute;*/
+    /*padding: 0;*/
+    /*height: 16%;*/
+    /*width:100%;*/
+    /*background-size:contain;*/
+    /*!*margin: 2% 0 0 1%;*!*/
+    /*background-repeat: no-repeat;*/
+    /*margin: auto;*/
+/*}*/
 
-.player1,
-.mrsPacman {
-    background: url("images/mrsPacman.png");
-    position: absolute;
-    padding: 0;
-    height: 16%;
-    width:100%;
-    background-size:contain;
-    /*margin: 2% 0 0 1%;*/
-    background-repeat: no-repeat;
-    margin: auto;
-}
+/*.player1,*/
+/*.mrsPacman {*/
+    /*background: url("images/mrsPacman.png");*/
+    /*position: absolute;*/
+    /*padding: 0;*/
+    /*height: 16%;*/
+    /*width:100%;*/
+    /*background-size:contain;*/
+    /*!*margin: 2% 0 0 1%;*!*/
+    /*background-repeat: no-repeat;*/
+    /*margin: auto;*/
+/*}*/
 
 .ghost {
     background-image: url('images/Redghost.png');
@@ -378,29 +378,29 @@ button:hover {
     margin: auto;
 }
 
-.peach{
-    background-image: url('images/Peach.png');
-    position: absolute;
-    padding: 0;
-    height: 16%;
-    width:100%;
-    background-size:contain;
-    /*margin: 2% 0 0 1%;*/
-    background-repeat: no-repeat;
-    margin: auto;
-}
+/*.peach{*/
+    /*background-image: url('images/Peach.png');*/
+    /*position: absolute;*/
+    /*padding: 0;*/
+    /*height: 16%;*/
+    /*width:100%;*/
+    /*background-size:contain;*/
+    /*!*margin: 2% 0 0 1%;*!*/
+    /*background-repeat: no-repeat;*/
+    /*margin: auto;*/
+/*}*/
 
-.strawberry{
-    background-image: url('images/strawberry.png');
-    position: absolute;
-    padding: 0;
-    height: 16%;
-    width:100%;
-    background-size:contain;
-    /*margin: 2% 0 0 1%;*/
-    background-repeat: no-repeat;
-    margin: auto;
-}
+/*.strawberry{*/
+    /*background-image: url('images/strawberry.png');*/
+    /*position: absolute;*/
+    /*padding: 0;*/
+    /*height: 16%;*/
+    /*width:100%;*/
+    /*background-size:contain;*/
+    /*!*margin: 2% 0 0 1%;*!*/
+    /*background-repeat: no-repeat;*/
+    /*margin: auto;*/
+/*}*/
 
 .chip{
     position: absolute;
