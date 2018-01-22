@@ -18,9 +18,7 @@ function initializeGame() {
     game.init();
     $("#container").hide();
     $(".stats").hide();
-    // togglePlayerHighlight();
     eventHandlers();
-    // restart();
 }
 
 function eventHandlers(){
@@ -63,8 +61,8 @@ function startGameIntro(e) {
 }
 
 function playerChoice1(){
+    $(event.target).fadeOut();
     image1 = $(event.target).attr('src');
-    console.log(image1);
     for (var i =0; i < players.length; i++){
         if(image1 === players[i].image){
             var playerC1 = players[i];
@@ -74,9 +72,11 @@ function playerChoice1(){
     $('#choose').text('Click to Choose player 1!');
     $("#players").off("click", playerChoice1);
     $("#players").on("click", playerChoice2);
+    $("#choose").text("Click to Choose player 2!");
 }
 
 function playerChoice2(){
+    $(event.targget).fadeOut();
     image2 = $(event.target).attr('src');
     for (var i =0; i < players.length; i++){
         if(image2 === players[i].image){
