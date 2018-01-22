@@ -4,71 +4,34 @@ var currentPlayer = 0;
 var col;
 var row;
 var totalCount = 0;
-var gameBoard = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-];
+var gameBoard = [[], [], [], [], [], [], []];
+var image1;
+var image2;
+var dropLevel;
+var column;
+var players = [{name: "pacman", image:"images/Original_PacMan.png", class: "pacman" }, {name:"mrsPacman", image:"images/mrsPacman.png", class: "mrspacman" },
+               {name: "peach", image:"images/Peach.png", class: "peach" },{name:"strawberry", image:"images/strawberry.png", class: "strawberry"}];
+
 
 function initializeGame() {
     game = new GameBoard();
     game.init();
-    ///click handlers for each column array////
-    $(".cell0").click(chipCreate);
-    $(".cell1").click(chipCreate);
-    $(".cell2").click(chipCreate);
-    $(".cell3").click(chipCreate);
-    $(".cell4").click(chipCreate);
-    $(".cell5").click(chipCreate);
-    $(".cell6").click(chipCreate);
-    togglePlayerHighlight();
-    //intro
-    $("#intro").fadeIn(100);
-    $("#play").on("mouseover", function (e) {
-        e.preventDefault();
-        $("#intro").fadeOut(1000);
-        $("#character1").show().fadeIn(1000);
-        $(".playerchoice1").on("click", function() {
-            $(this).addClass(".player0");
-            $("#character1").fadeOut(1000);
-            $("#character2").show().fadeIn(1000);
-            $(".playerchoice2").on("click", function() {
-                $(this).addClass(".player1");
-                $("#character2").fadeOut(1000);
-            });
-        });
-    });
+    $("#container").hide();
+    $(".stats").hide();
+    eventHandlers();
+}
 
-    //// reset button function///
-
-    $("#reset").on("click", function(){
-        // $("#container div").empty();
-        $(".cell0").empty();
-        $(".cell1").empty();
-        $(".cell2").empty();
-        $(".cell3").empty();
-        $(".cell4").empty();
-        $(".cell5").empty();
-        $(".cell6").empty();
-        $("#you-won").fadeOut();
-        totalCount = 0;
-        gameBoard = [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ];
-
-    });
-
-
+function eventHandlers(){
+    $("#play").on("mouseover", startGameIntro);
+    $("#reset").on("click", restart);
+    $(".cell0").click(togglePlayer);
+    $(".cell1").click(togglePlayer);
+    $(".cell2").click(togglePlayer);
+    $(".cell3").click(togglePlayer);
+    $(".cell4").click(togglePlayer);
+    $(".cell5").click(togglePlayer);
+    $(".cell6").click(togglePlayer);
+    $("#players").on("click", playerChoice1);
 }
 /////Dom creation with jquery to create game area///////
 function GameBoard() {
@@ -87,38 +50,68 @@ function GameBoard() {
                 class: 'cell'+col,
             });
             colNum.appendTo("#container");
-
         }
-
     }
+}
+
+function startGameIntro(e) {
+    e.preventDefault();
+    $("#intro").fadeOut(1000);
+    $("#character1").show().fadeIn(1000);
+}
+
+function playerChoice1(){
+    $(event.target).fadeOut();
+    image1 = $(event.target).attr('src');
+    $("#mister").css("background-image", "url('"+ image1 +"')");
+    $('#choose').text('Click to Choose player 1!');
+    $("#players").off("click", playerChoice1);
+    $("#players").on("click", playerChoice2);
+    $("#choose").text("Click to Choose player 2!");
+}
+
+function playerChoice2(){
+    $(event.targget).fadeOut();
+    image2 = $(event.target).attr('src');
+    $("#miss").css("background-image", "url('"+ image2 +"')");
+    $("#players").off("click", playerChoice2);
+     startGame();
+}
+
+function startGame(){
+    $("#characters").hide();
+    $("#container").fadeIn();
+    $(".stats").fadeIn();
 }
 
 function togglePlayer() {
     currentPlayer = 1 - currentPlayer;
+    dropLevel = this.childElementCount;
+    column = $(this).attr("class");
+    console.log("dropLevel"+ dropLevel);
     togglePlayerHighlight();
-
-    // $("#player1").toggleClass("playerColor");
-    // $("#player2").toggleClass("playerColor2");
 }
+
 ///highlights left player on their turn //////
 function togglePlayerHighlight() {
     if(currentPlayer===0){
         $("#player1").addClass("playerColor");
-        $("#player2").removeClass("playerColor2")
+        $("#player2").removeClass("playerColor2");
+        player2Chip();
+
     } else if (currentPlayer===1) {
         $("#player2").addClass("playerColor2");
-        $("#player1").removeClass("playerColor")
+        $("#player1").removeClass("playerColor");
+        player1Chip();
     }
-
 }
-//// o click function called to create game pieces and animates to correct position///
-function chipCreate() {
+
+function player1Chip() {
     totalCount++;
     var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
     ////This will trigger Ghost to fall into random place in game//////
     if (totalCount === 10 || totalCount === 19 || totalCount === 30){
         var ghost = $('<div>', {
-            class: 'chip',
             class: 'ghost'
         });
         var ghostCol = [".cell0", ".cell1", ".cell2", ".cell3", ".cell4", ".cell5", ".cell6"];
@@ -134,18 +127,12 @@ function chipCreate() {
         $(ghost).animate({'top': dropPositions[drop.length-1]}, 1000);
 
     }else {
-        ////normal player chip piece creation on column click///
-        var dropLevel = this.childElementCount;
         row = dropLevel;
-        var column = $(this).attr("class");
         columnNum = column;
         if(dropLevel >= 6){
             return;
         }
-        var chip = $('<div>', {
-            class: 'chip',
-            class:'player' + currentPlayer
-        });
+        var chip = $('<div>').addClass("chip").css("background-image", "url('"+ image1 +"')");
         $("." + columnNum).append(chip);
         $(chip).animate({'top': dropPositions[dropLevel]}, 1000);
         ///Push to correct array position and get col variable to pass into check match functions
@@ -177,7 +164,6 @@ function chipCreate() {
             col = 6;
             gameBoard[6].push(currentPlayer);
         }
-        togglePlayer();
         //check for player chip match functions
         checkHorizon(gameBoard);
         checkVertical(gameBoard);
@@ -186,6 +172,90 @@ function chipCreate() {
     }
 }
 
+//// o click function called to create game pieces and animates to correct position///
+function player2Chip() {
+    totalCount++;
+    var dropPositions = ['81.6%','66%','50.2%','34.4%','18.6%','2.9%'];
+    ////This will trigger Ghost to fall into random place in game//////
+    if (totalCount === 10 || totalCount === 19 || totalCount === 30){
+        var ghost = $('<div>', {
+            class: 'ghost'
+        });
+        var ghostCol = [".cell0", ".cell1", ".cell2", ".cell3", ".cell4", ".cell5", ".cell6"];
+        var randomCol = Math.ceil(Math.random() * 6);
+        var randomColNum = ghostCol[randomCol];
+        gameBoard[randomCol].push(4);
+        dropLevel = randomCol;
+        if(dropLevel >= 6){
+            return;
+        }
+        var drop = gameBoard[dropLevel];
+        $(randomColNum).append(ghost);
+        $(ghost).animate({'top': dropPositions[drop.length-1]}, 1000);
+
+    }else {
+        row = dropLevel;
+        columnNum = column;
+        if(dropLevel >= 6){
+            return;
+        }
+        var chip = $('<div>').addClass("chip").css("background-image", "url('"+ image2 +"')");
+        $("." + columnNum).append(chip);
+        $(chip).animate({'top': dropPositions[dropLevel]}, 1000);
+        ///Push to correct array position and get col variable to pass into check match functions
+        if (column === 'cell0') {
+            col = 0;
+            gameBoard[0].push(currentPlayer);
+        }
+        if (column === 'cell1') {
+            col = 1;
+            gameBoard[1].push(currentPlayer);
+        }
+        if (column === 'cell2') {
+            col = 2;
+            gameBoard[2].push(currentPlayer);
+        }
+        if (column === 'cell3') {
+            col = 3;
+            gameBoard[3].push(currentPlayer);
+        }
+        if (column === 'cell4') {
+            col = 4;
+            gameBoard[4].push(currentPlayer);
+        }
+        if (column === 'cell5') {
+            col = 5;
+            gameBoard[5].push(currentPlayer);
+        }
+        if (column === 'cell6') {
+            col = 6;
+            gameBoard[6].push(currentPlayer);
+        }
+        //check for player chip match functions
+        checkHorizon(gameBoard);
+        checkVertical(gameBoard);
+        checkUpLeft(gameBoard);
+        checkUpRight(gameBoard);
+    }
+}
+
+function restart(){
+    $(".cell0").empty();
+    $(".cell1").empty();
+    $(".cell2").empty();
+    $(".cell3").empty();
+    $(".cell4").empty();
+    $(".cell5").empty();
+    $(".cell6").empty();
+    $("#you-won").fadeOut();
+    totalCount = 0;
+    gameBoard = [[], [], [], [], [], [], []];
+    $("#container").hide();
+    $(".stats").hide();
+    $("#characters").fadeIn();
+    $("#players").on("click", playerChoice1);
+
+}
 //////////////////HORIZON MATCH CHECKS ////////////////////////////////
 function checkHorizon(arr) {
     var counter = 1;
@@ -209,25 +279,26 @@ function checkHorizon(arr) {
 }
 
 ///////////VERTICAL MATCH CHECKS///////////////////////////////////
-    function checkVertical(arr) {
-        var counter = 1;
-        for(var x = 0; x < arr.length; x++) {
-            counter = 1; ///counter reset every time
-            for (var verticalPiece = 0; verticalPiece < arr[x].length - 1; verticalPiece++) {
-                if (arr[x][verticalPiece] === arr[x][verticalPiece + 1]) {
-                    counter++;
-                    if (counter === 4) {
-                        console.log("winner is at Col " + x);
-                        $("#you-won").show("slow").addClass('slide', 3000);
-                        counter = 1;
-                    }
-                }else{
-                counter = 1;
+function checkVertical(arr) {
+    var counter = 1;
+    for(var x = 0; x < arr.length; x++) {
+        counter = 1; ///counter reset every time
+        for (var verticalPiece = 0; verticalPiece < arr[x].length - 1; verticalPiece++) {
+            if (arr[x][verticalPiece] === arr[x][verticalPiece + 1]) {
+                counter++;
+                if (counter === 4) {
+                    console.log("winner is at Col " + x);
+                    $("#you-won").show("slow").addClass('slide', 3000);
+                    counter = 1;
                 }
+            }else{
+            counter = 1;
             }
-
         }
+
     }
+}
+
 ///////////////////////////THIS CHECKS FOR MATCH DIAGONAL FROM BOTTOM UP TO RIGHT//////////////////////
 function checkUpRight(arr) {
     var counter = 1;
@@ -252,11 +323,11 @@ function checkUpRight(arr) {
                 }
             }
         }
-            if (counter === 1) {
-                return;
-            }
+        if (counter === 1) {
+            return;
         }
     }
+}
 
 ///////////THIS CHECKS FOR MATCH DIAGONAL FROM BOTTOM UP TO LEFT /////////////////////////////////
 function checkUpLeft(arr){
@@ -287,11 +358,3 @@ function checkUpLeft(arr){
         }
     }
 }
-
-
-
-
-
-
-
-

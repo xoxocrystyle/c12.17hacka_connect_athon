@@ -1,16 +1,15 @@
 #container{
     height: 100%;
     width: 54%;
-    background:url("https://i.pinimg.com/originals/cf/43/08/cf430887e595326299b5fdf85a75b107.jpg"), #000;
+    background:url("images/gameBoard.jpg"), #000;
     background-size: cover;
     display: inline-block;
     vertical-align:top;
     margin: 0;
-    padding-left: 2%;
+    padding-left: 1%;
     position: absolute;
     overflow: hidden;
 }
-
 
 .cell0,
 .cell1,
@@ -18,8 +17,7 @@
 .cell3,
 .cell4,
 .cell5,
-.cell6
- {
+.cell6{
      display: inline-flex;
      flex-flow: column;
      height: 80%;
@@ -30,7 +28,6 @@
      box-sizing: border-box;
      position: relative;
      cursor: pointer;
-
  }
 
 .cell0:hover,
@@ -42,15 +39,6 @@
 .cell6:hover
 {
     box-shadow: 0 0 10px lightgoldenrodyellow;
-}
-
-.chip {
-    height: 16%;
-    width: 100%;
-    margin: 5% 0 0 1%;
-    background-color: pink;
-    border-radius: 50%;
-    position: absolute;
 }
 
 .col{
@@ -77,8 +65,8 @@ body{
     margin:0;
     padding:0;
 }
-#stats{
-    display: flex;
+.stats{
+    /*display: flex;*/
    flex-direction: column;
     width: 20%;
     height: 100%;
@@ -91,60 +79,42 @@ body{
 }
 
 .chipRow{
-    /*padding-left:2%;*/
     height: 13%;
     width: 100%;
     display: inline-flex;
     flex-flow: column-reverse;
-    /*#background-color: lightblue;*/
-    /*opacity: 1;*/
-    /*display: inline-block;*/
-
 }
 
-.playerchoice1,
+.playerchoice1{
+    padding: 0;
+    height: 35%;
+    width: 23%;
+    background-size:contain;
+    margin-left:5%;
+    cursor: pointer;
+}
+
 .playerchoice2,
 .playerchoice3,
 .playerchoice4{
     padding: 0;
-    height: 16%;
-    width:100%;
+    height: 35%;
+    width: 23%;
     background-size:contain;
-    /*margin: 2% 0 0 1%;*/
-    background-repeat: no-repeat;
+    cursor: pointer;
 }
 
-.player0 {
-    /*background:url("https://upload.wikimedia.org/wikipedia/en/a/a8/Original_PacMan.png");*/
-    position: absolute;
-    padding: 0;
-    height: 16%;
-    width:100%;
-    background-size:contain;
-    /*margin: 2% 0 0 1%;*/
-    background-repeat: no-repeat;
 
-}
-
-.player1 {
-    background-color: red;
-    /*background: url("https://i.imgur.com/DYjbDHp.png");*/
-    position: absolute;
-    padding: 0;
-    height: 16%;
-    width: 100%;
-    background-size: contain;
-    /*margin: 2% 0 0 1%;*/
-    background-repeat: no-repeat;
-
-}
 #miss {
     animation-name: floating;
     animation-duration: 3s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    margin-left: 30px;
-    margin-top: 5px;
+    margin: 1% 0 0 1%;
+    height: 32%;
+    width: 87%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 @keyframes floating {
@@ -158,8 +128,12 @@ body{
     animation-duration: 3s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    margin-left: 30px;
-    margin-top: 5px;
+    margin: 1% 0 0 1%;
+    height: 32%;
+    width: 87%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 @keyframes floating {
@@ -168,7 +142,7 @@ body{
     to   { transform: translate(0, -0px); }
 
 }
-/*intro*/
+
 #intro {
     #display: block;
     #vertical-align: top;
@@ -176,7 +150,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: url("https://i.imgur.com/obojRZ5.gif"), no-repeat;
+    background: url("images/intropmanghosts.gif"), no-repeat;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -186,7 +160,6 @@ body{
     height: 100vh;
     background-color: #060F38;
     overflow: hidden;
-
 }
 
 #intropic{
@@ -224,7 +197,6 @@ body{
     background: transparent;
     animation: blink-animation 1s steps(5, start) infinite;
     -webkit-animation: blink-animation 1s steps(5, start) infinite;
-
 }
 
 #intro-button>#play:hover {
@@ -257,7 +229,6 @@ body{
     border: none;
     color: yellow;
     text-decoration: normal;
-    text-align: center;
     -o-text-overflow: clip;
     text-overflow: clip;
     white-space: pre;
@@ -298,7 +269,6 @@ body{
     -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     background: transparent;
-
 }
 
 
@@ -306,12 +276,10 @@ body{
 
 .playerColor {
     text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;
-
 }
 
 .playerColor2 {
     text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;
-
 }
 
 #reset{
@@ -327,16 +295,6 @@ button:hover {
     cursor:pointer;
 }
 
-/*.missColor {*/
-    /*text-shadow: 0 0 10px rgba(255,0,255,1), 0 0 20px rrgba(255,0,255,1), 0 0 30px rgba(255,0,255,1), 0 0 40px #04010f, 0 0 70px #000000, 0 0 80px #032296, 0 0 100px #51adad;*/
-
-/*}*/
-
-
-#my_audio{
-    display:none;
-}
-
 /*choose players*/
 #choose {
     color: white;
@@ -345,23 +303,22 @@ button:hover {
     text-align: center;
 }
 
-#character1,
-#character2 {
-    display: flex;
+
+#character{
     align-items: center;
     justify-content: center;
-    display: none;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
+    padding-top:3%;
 }
 
 #players {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-
+    height: 85%;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 5%;
 }
 
 #pacmanrunning{
@@ -377,17 +334,7 @@ button:hover {
 #players img{
     height: 200px;
     width: 200px;
-
 }
-
-/*.playerchoice1 img,*/
-/*.playerchoice2 img,*/
-/*.playerchoice3 img,*/
-/*.playerchoice4 img {*/
-    /*width: 8%;*/
-    /*height: 8%;*/
-/*}*/
-
 
 .ghost {
     background-image: url('images/Redghost.png');
@@ -399,5 +346,16 @@ button:hover {
     /*margin: 2% 0 0 1%;*/
     background-repeat: no-repeat;
     margin: auto;
-
 }
+
+.chip{
+    position: absolute;
+    padding: 0;
+    height: 16%;
+    width:100%;
+    background-size:contain;
+    /*margin: 2% 0 0 1%;*/
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
