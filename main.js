@@ -239,6 +239,23 @@ function player2Chip() {
     }
 }
 
+function restart(){
+    $(".cell0").empty();
+    $(".cell1").empty();
+    $(".cell2").empty();
+    $(".cell3").empty();
+    $(".cell4").empty();
+    $(".cell5").empty();
+    $(".cell6").empty();
+    $("#you-won").fadeOut();
+    totalCount = 0;
+    gameBoard = [[], [], [], [], [], [], []];
+    $("#container").hide();
+    $(".stats").hide();
+    $("#characters").fadeIn();
+    $("#players").on("click", playerChoice1);
+
+}
 //////////////////HORIZON MATCH CHECKS ////////////////////////////////
 function checkHorizon(arr) {
     var counter = 1;
@@ -340,22 +357,4 @@ function checkUpLeft(arr){
             return;
         }
     }
-}
-
-function restart(){
-    $(".cell0").empty();
-    $(".cell1").empty();
-    $(".cell2").empty();
-    $(".cell3").empty();
-    $(".cell4").empty();
-    $(".cell5").empty();
-    $(".cell6").empty();
-    $("#you-won").fadeOut();
-    totalCount = 0;
-    gameBoard = [[], [], [], [], [], [], []];
-    $("#container").hide();
-    $(".stats").hide();
-    $("#characters").fadeIn();
-    $("#players").on("click", playerChoice1);
-
 }
