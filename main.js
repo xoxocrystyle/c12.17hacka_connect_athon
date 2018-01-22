@@ -63,11 +63,6 @@ function startGameIntro(e) {
 function playerChoice1(){
     $(event.target).fadeOut();
     image1 = $(event.target).attr('src');
-    for (var i =0; i < players.length; i++){
-        if(image1 === players[i].image){
-            var playerC1 = players[i];
-        }
-    }
     $("#mister").css("background-image", "url('"+ image1 +"')");
     $('#choose').text('Click to Choose player 1!');
     $("#players").off("click", playerChoice1);
@@ -78,11 +73,6 @@ function playerChoice1(){
 function playerChoice2(){
     $(event.targget).fadeOut();
     image2 = $(event.target).attr('src');
-    for (var i =0; i < players.length; i++){
-        if(image2 === players[i].image){
-            var playerC2 = players[i];
-        }
-    }
     $("#miss").css("background-image", "url('"+ image2 +"')");
     $("#players").off("click", playerChoice2);
      startGame();
@@ -363,5 +353,9 @@ function restart(){
     $("#you-won").fadeOut();
     totalCount = 0;
     gameBoard = [[], [], [], [], [], [], []];
+    $("#container").hide();
+    $(".stats").hide();
+    $("#characters").fadeIn();
+    $("#players").on("click", playerChoice1);
 
 }
